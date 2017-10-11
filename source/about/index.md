@@ -1,0 +1,72 @@
+---
+layout: post
+title: Question and Answer
+date:
+thumbnail: "/img/about.jpg"
+---
+
+<div> <p class="question">名字：</p> <p class="answer">jskyzero </p>
+</div>
+
+<div> <p class="question">名字的含义：</p> <p class="answer">jskyzero = j + sky + zero 就是中文的锦天零的意思</p>
+</div>
+
+<div> <p class="question">名字的来历：</p> <p class="answer">大概是比较中二的时候自己起的，后来就拿起来用了</p>
+</div>
+
+<div> <p class="question">性别年龄等相关：</p> <p class="answer">待补充（逃</p>
+</div>
+
+<div> <p class="question">社会职业：</p> <p class="answer">学生</p>
+</div>
+
+<div> <p class="question">学校等相关：</p> <p class="answer">待补充（逃</p>
+</div>
+
+<div> <p class="question">理想的职业：</p> <p class="answer">工作两年后 被下岗 回老家开小餐馆</p>
+</div>
+
+<div> <p class="question">喜欢使用的语言：</p> <p class="answer">水平和客观条件离能挑选使用语言还差的太远</p>
+</div>
+
+<div> <p class="question">对初学者要说的话：</p> <p class="answer">多写代码多看书，少玩游戏少看番</p>
+</div>
+
+<div> <p class="question">上面那条建议是不是太假：</p> <p class="answer">人总是需要骗一下自己的（大雾</p>
+</div>
+
+<div> <p class="question">兴趣爱好：</p> <p class="answer">番剧/漫画/游戏/轻小说 等 一般性宅向偏好</p>
+</div>
+
+<div> <p class="question">圈内一句话介绍自己：</p> <p class="answer">前辈你好我是萌新小锦QAQ请多多指教</p>
+</div>
+
+<div> <p class="question">喜欢的二次元组合：</p> <p class="answer">ClariS（曾经</p>
+</div>
+
+<div> <p class="question">喜欢的二次元女角色：</p> <p class="answer">藤宫香织（出自《一周的朋友》）</p>
+</div>
+
+<div> <p class="question">最近看过并且推荐的番剧：</p> <p class="answer">《三月的狮子》（能从中看到自己的影子</p>
+</div>
+
+<div> <p class="question">最近玩过并且推荐的游戏：</p> <p class="answer">《Persona 5》（来开始更新吧w</p>
+</div>
+
+<div> <p class="question">PlayStation Network ID：</p> <p class="answer">sujiner （欢迎dalao加好友一起玩w</p>
+</div>
+
+<div> <p class="question">对未来的期望：</p> <p class="answer">希望有能力担起自己的未来:)</p>
+</div>
+
+<style> 
+p {
+    width: 100%;
+}
+p.question {
+    color: pink;
+}
+p.answer {
+    color: gray;
+}
+</style>
