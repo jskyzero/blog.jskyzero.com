@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "编译原理"
-date:       2017-10-05
+date:       2017-10-15
 tags:
     - Code
     - Compilers_Principles
@@ -48,4 +48,5 @@ categories:
   + 串和语言及其运算
   + 正则表达式及正则定义
   + 状态转移图
+  + NFA与DFA，以及互相转化。
 ## 待补充
