@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "编译原理"
-date:       2017-10-15
+date:       2017-10-22
 tags:
     - Code
     - Compilers_Principles
@@ -49,4 +49,9 @@ categories:
   + 正则表达式及正则定义
   + 状态转移图
   + NFA与DFA，以及互相转化。
+## 语法分析
++ 描述语言的模型之一：文法。
+  + 使用字母表，串及其连接。
+  + 上下文相关/无关方法
+
 ## 待补充

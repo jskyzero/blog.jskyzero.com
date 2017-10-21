@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "计算机网络自顶向下方法"
-date:       2017-10-15
+date:       2017-10-22
 tags:
     - Code
     - Computer Network
@@ -54,4 +54,7 @@ categories:
     + DNS服务器的分层设计和报文格式
 + P2P
     + 点对点，文件分发。
+    + P2P环路和细节
++ 嵌套字编程
+
 ## 待补充
