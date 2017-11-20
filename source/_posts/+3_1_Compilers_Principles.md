@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "编译原理"
-date:       2017-11-04
+date:       2017-11-20
 tags:
     - Code
     - Compilers_Principles
@@ -60,5 +60,14 @@ categories:
 + 语法分析：
     + 自顶向下：LL/LL(k)
     + 自下向上:LR
+    + 递归下降
+      + 使用下推自动机（PDA）
+      + 将上下文无关文法转化为PDA
+    + LL(K)
+      + 构造预测分析表
+        + 对与每个A->a产生式子的a，计算FIRST(a) FELLOW(a)
+        + 对于FIRST(a)中的每个α，将A->a加入M[A, α]，若α为空，且结束符（$）在FELLOW(a)中，将A->a加入到M[A, $]中。
+      + 根据预测分析表选择产生式开始置换，并输出相应产生式。
+
 
 ## 待补充
