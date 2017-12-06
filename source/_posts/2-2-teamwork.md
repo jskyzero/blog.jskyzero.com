@@ -5,7 +5,6 @@ date: 2017/05/18
 tags:
     - Code
     - Reading
-    - Me
 categories:
     - Reading
 thumbnail: "/img/thumb/teamwork.jpg"
