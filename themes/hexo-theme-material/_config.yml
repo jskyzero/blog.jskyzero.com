@@ -57,7 +57,7 @@ reading:
 # Thumbnail Settings
 thumbnail:
     purecolor:
-    random_amount: 3
+    random_amount: 1
 
 # Background Settings
 # bing available parameter:

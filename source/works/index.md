@@ -33,26 +33,3 @@ title: Works
   + [Data-Mining](https://github.com/jskyzero/Data-Mining)
   + Machine-Learning
   + Artificial-Intelligence
-
-Time Line 
-
-```
-.
-├── 开始使用新的博客
-├── 完成第一篇博文HelloWorld
-├── 陆陆续续将过去的博文修正发布
-├── 开始自学UWP
-├── 将AGC相关的文章移出至ACG-House
-├── MoePicture-UWP发布第一版
-├── 开始自学android
-├── MoePicture-Android发布第一版
-└── 生了一场重病
-
-.
-├── 2017/09/01 3-1开始
-├── 并行(MPI)
-├── 社团招新面试
-└── 待续
-```
-
-
