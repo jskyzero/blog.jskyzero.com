@@ -1,7 +1,7 @@
 # Site
 title: jskyzero-blog
 subtitle: "otaku.change(world);"
-description: "jskyzero-blog" 
+description: "jskyzero's blog" 
 author: jskyzero
 language: zh-CN
 timezone: Asia/Hong_Kong
@@ -33,12 +33,18 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+# highlight:
+#   enable: false
+#   line_number: true
+#   auto_detect: false
+#   tab_replace:
 highlight:
-  enable: false
+  enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace:
-  
+
+
 # live2d
 live2d:
   model: z16

@@ -7,6 +7,9 @@ avatar:
   url: "/img/jskyzero.jpg"
 
 background:
+  background_color: white
+  # Custom Background Picture
+  enable_picture: true
   url: "/img/gallery/roboot.png"
   css_size: cover
   css_position: 50%
@@ -40,6 +43,20 @@ menu_icons:
   Categories: fa-bookmark
   Tags: fa-hashtag
   About: fa-smile-o
+
+# -------------------------------------------------------
+# Custom Blur
+# -------------------------------------------------------
+blur:
+  background_color: white
+  hide_overflow: false
+  gaussian_radius:
+    top_navigator: 30 # 30+ preferred
+    header: 10 # 5 ~ 50 preferred
+    footer: 40 # 5 ~ 100 preferred
+
+  font:
+    color: white -- '#6CA3E8'
 
 # -------------------------------------------------------
 # Social
@@ -92,6 +109,13 @@ gitment:
   per_page: 8 # comments per page
   max_comment_height: 250 # default 250px
 
+# -------------------------------------------------------
+# Google Analytics
+# -------------------------------------------------------
+
+google_analytics:
+  enable: false
+  track_id: UA-91393897-1 # replace to your track_id. It starts with 'UA-'.
 
 # -------------------------------------------------------
 # Powered by
