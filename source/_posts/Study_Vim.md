@@ -18,6 +18,9 @@ Vi：vi是一种计算机文本编辑器，由美国计算机科学家比尔·�
 Vim：Vim是从vi发展出来的一个文本编辑器。代码补完、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。和Emacs并列成为类Unix系统用户最喜欢的编辑器。
 [What is the difference between Vi and Vim?](http://askubuntu.com/questions/418396/what-is-the-difference-between-vi-and-vim)：vim is almost a proper superset of vi. Therefore, everything that is in vi is available in vim.
 
+
+<!--more-->
+
 ## 基本用法
 > 虽说是把vi分了这么几个模式，那就按照模式来说一些基本的用法吧。
 

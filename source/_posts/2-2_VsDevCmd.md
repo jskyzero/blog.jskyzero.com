@@ -16,9 +16,12 @@ categories:
 # VsDevCmd在PowerShell中的打开姿势
 > 看完本文，您将可以在PowerShell自定义运行Visual Studio 2017 的VsDevCmd.bat，在命令行编译/调试的时候还是挺方便的。
 
+
 ## 简介VsDevCmd
 
 我是在想在PowerShell中直接运行csc编译.cs文件的时候引起的这个需求，嗯我们可以在开始菜单的Visual Studio 2017文件夹中找到Developer Command Prompt for VS 2017，欸这个东西就提供给我们的工具了，不过直接运行系统的话会有三个问题，其一是运行方法是鼠标点击，这显然不够效率，其二是自带的运行的话是在CMD里面的，讲波道理ls指令都没有的话还是用不太顺手，其三是运行时候的目录会变成源文件的根目录里，需要我们手动再导航，这就比较尴尬。
+
+<!--more-->
 
 ## 初步尝试
 我们可以定位下开始菜单里面的快捷方式，来看看这玩意具体是啥。

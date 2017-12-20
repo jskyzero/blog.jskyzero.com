@@ -17,6 +17,8 @@ thumbnail: https://cdn.worldvectorlogo.com/logos/ping.svg
 2. 本文基於一些現有的書籍和自己的經歷。希望是在現實中可以派上用場。
 3. 本文將不會贅述任何參數選項相關，需要的話請自行查閲參考手冊。
 
+<!--more-->
+
 ## Windows
 > 基於`Microsoft Windows [Version 10.0.15063] Powershell`
 
