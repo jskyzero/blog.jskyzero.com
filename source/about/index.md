@@ -60,9 +60,6 @@ thumbnail: "/img/about.jpg"
 </div>
 
 <style> 
-p {
-    width: 100%;
-}
 p.question {
     color: pink;
 }
