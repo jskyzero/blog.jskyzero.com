@@ -114,7 +114,7 @@ gitment:
 # -------------------------------------------------------
 
 google_analytics:
-  enable: false
+  enable: true
   track_id: UA-91393897-1 # replace to your track_id. It starts with 'UA-'.
 
 # -------------------------------------------------------
