@@ -56,7 +56,7 @@ blur:
     footer: 40 # 5 ~ 100 preferred
 
   font:
-    color: white -- '#6CA3E8'
+    color: white  # '#6CA3E8'
 
 # -------------------------------------------------------
 # Social
