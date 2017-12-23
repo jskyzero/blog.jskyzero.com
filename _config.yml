@@ -82,7 +82,7 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 # Themes: https://hexo.io/themes/
 # theme: hexo-theme-material
-theme: lite
+theme: hexo-theme-lite-1.2.4
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
