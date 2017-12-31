@@ -14,11 +14,11 @@ categories:
 # Linear algebra
 > wikipedia：线性代数是关于向量空间和线性映射的一个数学分支。它包括对线、面和子空间的研究，同时也涉及到所有的向量空间的一般性质。
 
-<!--more-->
-
 ## 前言
 
 请知悉本文对应《Linear Algebra and It's applications 3rd 》，作者Davic C Lay。
+
+<!--more-->
 
 ## 线性代数中的线性方程
 1. 矩阵表示法：系数矩阵，增广矩阵
