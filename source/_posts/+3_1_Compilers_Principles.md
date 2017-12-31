@@ -9,13 +9,15 @@ categories:
     - Reading
 ---
 
-本文将总结SYSU SE 2017的编译原理课程的相关内容。
+本文将总结编译原理课程的相关内容，并希望读者阅读以后能对程序的编译过程有一个系统的理解。
 
-<!--more-->
 
 ## 前言
 > 本文对应教材为
 > 编译原理(英文版•第2版) Alfred V.Aho, Monica S.Lam, Ravi Sethi, Jeffrey D.Ullman，机械工业出版社
+
+
+<!--more-->
 
 ## 引论
 
