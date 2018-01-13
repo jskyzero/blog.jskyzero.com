@@ -1,10 +1,10 @@
 ---
 layout:     post
 title:      "编译原理"
-date:       2018-01-03
+date:       2018-01-13
 tags:
     - Code
-    - Compilers_Principles
+    - Compilers Principles
 categories:
     - Reading
 ---
