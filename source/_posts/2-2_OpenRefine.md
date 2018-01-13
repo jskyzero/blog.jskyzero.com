@@ -15,8 +15,6 @@ thumbnail: "http://openrefine.org/images/2015-01-23-Mapping-OpenRefine-Ecosystem
 
 # OpenRefine上手
 
-> 本文属于大数据分析初步系列文章
-
 ## OpenRefine简介
 
 OpenRefind，之前又被称为Google Refine，是一个开源的数据处理应用程序。可以用来清洗数据/转化数据。
