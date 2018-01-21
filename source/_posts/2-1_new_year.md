@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "新年快乐 && 除夕快乐"
+title:      "新年快乐 & 除夕快乐"
 date:       2017-01-27
 updated:     2017/02/20
 thumbnail: "/img/thumb/new_year.jpg"
@@ -35,7 +35,7 @@ categories:
 
 wwww除夕快乐，嗯。
 
-# 2017-01-01 新年快乐w
+# 2017/01/01 新年快乐w
 
 真的是一眨眼就又一年了呐. 时间不等人23333
 

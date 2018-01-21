@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      又是一年开学季 && 大二下结束w
+title:      又是一年开学季 & 大二下结束w
 date:       2017-02-18
 updated:    2017/02/20
 visible:    hide
@@ -43,7 +43,7 @@ categories: Me
 祝好w
 
 
-## 大二下结束w
+# 大二下结束w
 `2017-07-03`
 
 嗯，稍稍谈一下未来什么的。

@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "回到南方 && 寒假"
+title:      "回到南方 & 寒假"
 date:       2017-02-05
 updated:    2017/02/20
 visible:    hide
@@ -8,7 +8,7 @@ tags:
     - Me
 categories:
     - Me
-toc: false
+toc: true
 ---
 这样也就算是结束了，这次旅途。
 
