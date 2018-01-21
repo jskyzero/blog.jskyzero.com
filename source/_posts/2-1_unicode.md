@@ -12,6 +12,8 @@ categories:
 
 将会涉及到Unicode UTF-8 UTF-16编码问题，请参考wikipedia的相关页面，这里试图以系统化的方式来论述这些知识。
 
+<!--more-->
+
 # 谈谈字符编码的问题
 
 ## Unicde
@@ -28,7 +30,6 @@ categories:
 
 在表示一个Unicode的字符时，通常会用“U+”然后紧接着一组十六进制的数字来表示这一个字符
 
-<!--more-->
 
 ### Tips
 

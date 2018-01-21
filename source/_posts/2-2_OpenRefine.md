@@ -13,6 +13,8 @@ thumbnail: "http://openrefine.org/images/2015-01-23-Mapping-OpenRefine-Ecosystem
 
 本文将讲述OpenRefine是什么，OpenRefine怎么用，以及回答实验留下的问题。
 
+<!--more-->
+
 # OpenRefine上手
 
 ## OpenRefine简介
@@ -21,7 +23,6 @@ OpenRefind，之前又被称为Google Refine，是一个开源的数据处理应
 
 OpenRefind完全建立在本地，使用网页交互，通俗来讲，通过载入特定格式文件新建项目，每个项目是一个表，可以对表中的数据进行加工和处理，包括合并类似项，删除项，修改项目值，最后可以导出为指定格式。完成获取到的数据的初步提纯处理。
 
-<!--more-->
 
 
 ## OpenRefine使用

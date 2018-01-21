@@ -11,13 +11,13 @@ thumbnail: https://cdn.worldvectorlogo.com/logos/ping.svg
 
 本文將介紹一些基本的命令行的網絡工具，包括Windows和Linux
 
+<!--more-->
+
 ## 前言
 
 1. 我們假定您熟悉基本的命令行知識，如果您是第一次接觸命令行，可能需要先學習點基本常識。
 2. 本文基於一些現有的書籍和自己的經歷。希望是在現實中可以派上用場。
 3. 本文將不會贅述任何參數選項相關，需要的話請自行查閲參考手冊。
-
-<!--more-->
 
 ## Windows
 > 基於`Microsoft Windows [Version 10.0.15063] Powershell`

@@ -13,6 +13,7 @@ thumbnail: "/img/thumb/uwp.png"
 
 嗯本文将结合具体代码帮助读者快速上手MvvmLight，我们希望读者已经了解Mvvm/DI/IoC的相关知识
 
+<!--more-->
 
 # MvvmLight快速上手
 > 最近仍然在学习一些包的用法，这次分享关于MvvmLight的相关用法
@@ -23,8 +24,6 @@ thumbnail: "/img/thumb/uwp.png"
 
 如果您是第一次接触Mvvm，请参考[这篇文章](https://msdn.microsoft.com/zh-cn/library/hh848246.aspx)，Mvvm的目的和具体方法在上面都有提及，在我们具体实现上，我们只需要注意逻辑分层，使用如上图合理的手段来联系层与层间就好了。
 
-
-<!--more-->
 
 ## 关于依赖注入和控制反转容器您需要知道
 

@@ -8,7 +8,9 @@ categories:
     - Code
 ---
 
-本文将概述Vi及Vim编辑器的使用
+本文将概述Vi及Vim编辑器的使用。
+
+<!--more-->
 
 # Vim-Study
 > 鉴于可能日后我们会使用的高级使用技巧部分应该已经是Vim的功能了，这里偷偷换一下标题。
@@ -19,7 +21,6 @@ Vim：Vim是从vi发展出来的一个文本编辑器。代码补完、编译及
 [What is the difference between Vi and Vim?](http://askubuntu.com/questions/418396/what-is-the-difference-between-vi-and-vim)：vim is almost a proper superset of vi. Therefore, everything that is in vi is available in vim.
 
 
-<!--more-->
 
 ## 基本用法
 > 虽说是把vi分了这么几个模式，那就按照模式来说一些基本的用法吧。

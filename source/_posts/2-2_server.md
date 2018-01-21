@@ -12,12 +12,12 @@ thumbnail: "https://blogs-images.forbes.com/janakirammsv/files/2016/01/1711471.j
 
 本文将讲述一个一般型的云服务服务器的部署，以Ubuntu 16.04下配置shadowsocks server 和 nodejs server 为示例。
 
+<!--more-->
+
 # Linux服务器配置
 
 > 沉迷了两天的巫师三，整个人都不好了，今天不小心把Win10弄炸了，于是重装了系统，又从新配置了服务器，所以干脆把过程总结下来，方便以后使用。
 
-
-<!--more-->
 
 ## 前置
 
