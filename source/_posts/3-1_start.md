@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "大三上结束w &（大三上）从B萌开始"
+title: "大三上结束w & （大三上）从B萌开始"
 date: 2018/01/21
 tags:
     - Me
