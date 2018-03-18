@@ -31,5 +31,5 @@ title: Works
   + [Haskell](https://github.com/jskyzero/Haskell-Study)
 + 数据与信息
   + [Data-Mining](https://github.com/jskyzero/Data-Mining)
-  + Machine-Learning
+  + [Machine-Learning](https://github.com/jskyzero/Machine-Learning)
   + Artificial-Intelligence
