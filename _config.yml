@@ -39,10 +39,7 @@ future: true
 #   auto_detect: false
 #   tab_replace:
 highlight:
-  enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace:
+  enable: false
 
 
 # live2d

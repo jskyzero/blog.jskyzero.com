@@ -125,7 +125,7 @@ qrcode:
 #    Prettify
 #        theme: # Available value in /source/css/prettify/[theme].min.css
 prettify:
-    enable: false
+    enable: true
     theme: "github-v2"
 
 #    Hanabi (https://github.com/egoist/hanabi)
@@ -135,7 +135,7 @@ prettify:
 #                    - If `includeDefaultColors` is true, this will append colors to the color pool
 #                    - If `includeDefaultColors` is false, this will instead default color pool
 hanabi:
-    enable: true
+    enable: false
     line_number: true
     includeDefaultColors: true
     customColors: 
