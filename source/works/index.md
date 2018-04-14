@@ -26,7 +26,7 @@ title: Works
   + [Machine-Learning](https://github.com/jskyzero/Machine-Learning)
   + Artificial-Intelligence
   + ...
-+ 基础功
++ 基本功
   + [Computer Graphics](https://github.com/jskyzero/Computer-Graphics)
   + [Operating System](https://github.com/jskyzero/Mini-OS)
   + [DataBase Manage System](https://github.com/jskyzero/DataBase-Manage-System)
