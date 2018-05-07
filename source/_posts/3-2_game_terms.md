@@ -6,7 +6,7 @@ tags:
     - Game
     - Game Design
 categories:
-    - Game Design
+    - Reading
 ---
 
 说来惭愧，吃了一次这个术语简称的亏，然后仔细研究一番以后才发现，原来自己喜欢的游戏类型是，ARPG不是ACT...
