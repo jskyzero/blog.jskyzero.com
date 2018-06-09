@@ -86,5 +86,5 @@ theme: material
 deploy:
   type:     git
   repo:     git@github.com:jskyzero/jskyzero.github.io.git
-  branch:   master
+  branch:   gh-pages
   message:  "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
