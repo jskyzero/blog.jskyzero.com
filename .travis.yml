@@ -27,7 +27,7 @@ script:
 # 分支白名单
 branches:
   only:
-    - master # 只对 hexo 分支进行构建
+    - hexo # 只对 hexo 分支进行构建
 
 # GitHub Pages 部署
 deploy:
@@ -37,9 +37,9 @@ deploy:
   github_token: $GITHUB_TOKEN
   # 将 public 目录下的内容推送到 master 分支上（必须）
   local_dir: public
-  target-branch: gh-pages
+  target-branch: master
   # fqdn: $CUSTOM_DOMAIN
   # name: $GIT_NAME
   # email: $GIT_EMAIL
   on:
-    branch: master
+    branch: hexo
