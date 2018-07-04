@@ -7,11 +7,14 @@ head:
     favicon: "/img/favicon.ico"
     # high_res_favicon: "/img/jskyzero.jpg"
     # apple_touch_icon: "/img/jskyzero.jpg"
-    high_res_favicon: "/img/kirinokanata ‏.JPG"
-    apple_touch_icon: "/img/kirinokanata ‏.JPG"
+    high_res_favicon: "/img/kirinokanata.jpg"
+    apple_touch_icon: "/img/kirinokanata.jpg"
     keywords:
-        - Programing
-        - Coding
+        - jskyzero
+        - Program
+        - Notes
+        - Books
+
     site_verification:
         google:
         baidu:
@@ -78,9 +81,9 @@ background:
 img:
     logo: "/img/Nishiki.png"
     # avatar: "/img/jskyzero.jpg"
-    avatar: "/img/kirinokanata ‏.JPG"
-    daily_pic: "/img/lion.png"
-    sidebar_header: "/img/side_bar.jpg"
+    avatar: "/img/kirinokanata.jpg"
+    daily_pic: "/img/kirinokanata.jpg"
+    sidebar_header: "/img/kirinokanata.jpg"
     random_thumbnail: "/img/random/bg"
     footer_image:
         #upyun_logo:
