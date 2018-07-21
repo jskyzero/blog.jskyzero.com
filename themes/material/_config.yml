@@ -5,10 +5,10 @@
 # Head info
 head:
     favicon: "/img/favicon.ico"
-    # high_res_favicon: "/img/jskyzero.jpg"
-    # apple_touch_icon: "/img/jskyzero.jpg"
-    high_res_favicon: "/img/kirinokanata.jpg"
-    apple_touch_icon: "/img/kirinokanata.jpg"
+    high_res_favicon: "/img/jskyzero.jpg"
+    apple_touch_icon: "/img/jskyzero.jpg"
+    # high_res_favicon: "/img/kirinokanata.jpg"
+    # apple_touch_icon: "/img/kirinokanata.jpg"
     keywords:
         - jskyzero
         - Program
@@ -41,8 +41,8 @@ scheme: Paradox
 # UI & UX: slogan, color, effect
 uiux:
     slogan: 
-        # - "otaku.change(world);"
-        - "Individual Developer & Trainee Game Designer"
+        - "otaku.change(world);"
+        # - "Individual Developer & Trainee Game Designer"
     theme_color: "#446BB0"
     theme_sub_color: "#00838F"
     hyperlink_color: "#00838F"
@@ -80,10 +80,10 @@ background:
 # Images Settings
 img:
     logo: "/img/Nishiki.png"
-    # avatar: "/img/jskyzero.jpg"
-    avatar: "/img/kirinokanata.jpg"
-    daily_pic: "/img/kirinokanata.jpg"
-    sidebar_header: "/img/kirinokanata.jpg"
+    avatar: "/img/jskyzero.jpg"
+    # avatar: "/img/kirinokanata.jpg"
+    daily_pic: "/img/home2.jpg"
+    sidebar_header: "/img/side_bar.jpg"
     random_thumbnail: "/img/random/bg"
     footer_image:
         #upyun_logo:
