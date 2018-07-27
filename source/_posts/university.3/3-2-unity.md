@@ -48,7 +48,7 @@ categories:
 
 唔可以調整下優先級最後再管這些Kit類的教程
 
-### 5.Space Shooter Tutorial
+### 5.Space Shooter tutorial
 1. Introduction
   一個簡單的3D射擊小遊戲。
 2. Game setup, Player and Camera
@@ -57,4 +57,60 @@ categories:
 4. Scoring, Finishing, and building the game
 5. Extending Space Shooter
 
+### 6.Survival Shooter tutorial
 
+### 7.UFO tutorial
+
+### 8.Space Chicken
+
+### 9.Tanks tutorial
+
+### 10.Adventure Game tutorial
+
+### 11.2D Roguelike tutorial
+
+### 12.Tower Defense Template
+
+### 13.Creating Beliveable Visuals
+
+### 14.Procedural Cave Generation tutorial
+
+## 手冊
+
++ Unity User Manual
++ Working in Unity
++ Importing
++ 2D
++ Graphics
++ Scripting
++ Multiplayer and Networking
++ Audio
++ Animation
++ TimeLine
++ UI
++ Navigation and Pathfinding
++ Unity Services
++ XR
++ Open-source repositories
++ Asset Store Publishing
++ Platform-spcific
++ Experimental
++ Legacy Topic
++ Best practice guides
++ Expert guides
++ New in Unity
++ Packages Documentation
++ Glossary
+
+## 參考
+
++ UnityEngine
++ UnityEditor
++ Unity
++ Other
+
+## Reference
+
++ [Unity Learn Tutorials](https://unity3d.com/cn/learn/tutorials)
++ [Unity User Manual](https://docs.unity3d.com/Manual/UnityManual.html)
++ [Unity Scripting Reference](https://docs.unity3d.com/ScriptReference/index.html)
