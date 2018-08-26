@@ -6,7 +6,6 @@ tags:
     - Code
 categories:
     - Code
-thumbnail: https://cdn.worldvectorlogo.com/logos/java-3.svg
 ---
 
 每次实训都可以学到大量的东西，知识出现的过于密集是否能够消化呢？嘛，本文将总结中级实训GridWorld所涉及的知识，一些有用的学习思路，希望能给以后的自己一点帮助。
