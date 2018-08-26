@@ -213,21 +213,18 @@ sidebar:
         "About Me":
             link: "/about"
             icon: person
-        "My Works":
-            link: "/works"
-            icon: extension
         "Time Line":
             link: "/timeline"
             icon: "timeline"
-        Tags:
+        "Article Tags":
             link: "/tags"
             icon: dns
-        Gallery:
+        "Gallery":
             link: "/gallery"
             icon: picture_in_picture
-        "ACG House":
-            link: "/ACG-House"
-            icon: "aspect_ratio"
+        "Designer Notes":
+            link: "/Designer-Notes"
+            icon: "extension"
         Links:
             link: "/links"
             icon: link
