@@ -213,10 +213,10 @@ sidebar:
         "About Me":
             link: "/about"
             icon: person
-        "Time Line":
-            link: "/timeline"
-            icon: "timeline"
-        "Article Tags":
+        # "Time Line":
+        #     link: "/timeline"
+        #     icon: "timeline"
+        "Tags":
             link: "/tags"
             icon: dns
         "Gallery":
