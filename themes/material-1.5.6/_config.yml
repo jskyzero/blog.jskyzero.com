@@ -39,12 +39,12 @@ uiux:
     slogan: 
         - "otaku.change(world);"
         # - "Individual Developer & Trainee Game Designer"
-    theme_color: "#446BB0"
-    theme_sub_color: "#00838F"
-    hyperlink_color: "#00838F"
+    theme_color: "#757575"
+    theme_sub_color: "#757575"
+    hyperlink_color: "#757575"
     button_color: "#757575"
-    android_chrome_color: "#0097A7"
-    nprogress_color: "#FF4081"
+    android_chrome_color: "#757575"
+    nprogress_color: "#757575"
     nprogress_buffer: "800"
 
 # JS Effect Switches
@@ -77,9 +77,8 @@ background:
 img:
     logo: "/img/Nishiki.png"
     avatar: "/img/jskyzero.jpg"
-    # avatar: "/img/kirinokanata.jpg"
-    daily_pic: "/img/home2.jpg"
-    sidebar_header: "/img/side_bar.jpg"
+    daily_pic: "/img/jskyzero.kirinokanata.jpg"
+    sidebar_header: "/img/bg.jpg"
     random_thumbnail: "/img/random/bg"
     footer_image:
         #upyun_logo:
@@ -317,7 +316,7 @@ busuanzi:
     enable: true
     all_site_uv: true
     post_pv: true
-    busuanzi_pure_mini_js: "https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"
+    busuanzi_pure_mini_js: "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
 
 # Files Vendors
 # Set a CDN for the files src you want to customize. The url should with protocol.
