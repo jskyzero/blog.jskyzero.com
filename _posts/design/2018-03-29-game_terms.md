@@ -1,13 +1,10 @@
 ---
 layout: post
 title: "游戏术语"
-date: 2018/03/29
 header-img: "img/posts/new_year.jpg"
 tags:
     - Game
     - Game Design
-categories:
-    - Reading
 ---
 
 说来惭愧，吃了一次这个术语简称的亏，然后仔细研究一番以后才发现，原来自己喜欢的游戏类型是，ARPG不是ACT...

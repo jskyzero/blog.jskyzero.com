@@ -1,13 +1,10 @@
 ---
 layout: post
 title: "游戏策划"
-date: 2017/11/05
 header-img: "img/posts/new_year.jpg"
 tags:
     - Game
-    - Design
-categories:
-    - Reading
+    - Game Design
 ---
 
 咱想做游戏的初衷是制造欢乐,传播感动.然后这是Tencent互动娱乐的一个公开课,陆陆续续也上了好几节课,现在把内容整理一下.

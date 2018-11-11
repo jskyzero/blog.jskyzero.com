@@ -26,7 +26,11 @@
                     {% for page in site.pages %}
                     {% if page.title and page.hide-in-nav != true %}
                     <li>
+                        {% if page.link %}
+                        <a href="{{ page.link }}">{{ page.title }}</a>
+                        {% else %}
                         <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                        {% endif %}
                     </li>
                     {% endif %}
                     {% endfor %}

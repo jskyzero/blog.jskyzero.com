@@ -1,14 +1,10 @@
 ---
 layout: post
 title:  OpenRefine上手
-date:   2017/03/04
 tags:
     - Code
     - OpenRefine
     - BigDate
-categories:
-    - Code
-thumbnail: "http://openrefine.org/images/2015-01-23-Mapping-OpenRefine-Ecosystem/openrefine-map.png"
 ---
 
 本文将讲述OpenRefine是什么，OpenRefine怎么用，以及回答实验留下的问题。
