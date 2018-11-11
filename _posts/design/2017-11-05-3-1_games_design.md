@@ -2,6 +2,7 @@
 layout: post
 title: "游戏策划"
 date: 2017/11/05
+header-img: "img/posts/new_year.jpg"
 tags:
     - Game
     - Design
