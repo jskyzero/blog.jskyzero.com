@@ -13,6 +13,8 @@ baseurl: ""
 # Publish posts or collection documents with a future date.
 future: true
 
+author: jskyzero
+
 # SNS settings
 RSS: false
 # weibo_username:     jskyzero
@@ -81,7 +83,7 @@ ga_track_id: 'UA-91393897-1'            # Format: UA-xxxxxx-xx
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "welcome"
+sidebar-about-description: "otaku.change(world);"
 sidebar-avatar: /img/site/Me.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -105,8 +107,11 @@ page-mathjax: false
 
 # Friends
 friends: [
-    # {
-    #     title: "Su",
-    #     href: "http://su.gallery/"
-    # }
+    {
+        title: "Mesekovic",
+        href: "https://mesekovic.github.io"
+    },{
+        title: "owtotwo",
+        href: "https://owtotwo.github.io"
+    }
 ]

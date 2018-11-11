@@ -16,14 +16,16 @@ description: "jskyzero's Blog"
         {% endif %}
         <div class="post-content-preview">
             {% if post.lang == 'en' %}
+                <!-- {{ post.excerpt | strip_html | truncate:300 }} -->
                 {{ post.content | strip_html | truncate:300 }}
             {% else %}
+               <!-- {{ post.excerpt | strip_html | truncate:200 }} -->
                 {{ post.content | strip_html | truncate:200 }}
             {% endif %}
         </div>
     </a>
     <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
+        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.author }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
     </p>
 </div>
 <hr>
