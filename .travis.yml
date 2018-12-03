@@ -6,6 +6,8 @@ rvm: 2.3.3
 install:
   - gem install bundler
   - bundle install
+
+script:
   - bundle exec jekyll build
 
 # deploy to gh_pages branch 

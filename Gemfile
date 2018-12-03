@@ -4,3 +4,5 @@ source "https://rubygems.org"
 
 gem "jekyll"
 gem "jekyll-paginate"
+# for travis
+gem "rake"
