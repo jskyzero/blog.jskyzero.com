@@ -3,15 +3,18 @@ cache: bundler
 sudo: false
 rvm: 2.3.3
 
-gem install bundler
-bundle install
-bundle exec jekyll build
+install:
+  - gem install bundler
+  - bundle install
+  - bundle exec jekyll build
 
 # deploy to gh_pages branch 
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  target_branch: jekyll
+  target_branch: master
+  # local_dir: _site
   on:
-    branch: master
+    branch: jekyll
+
