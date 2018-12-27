@@ -2,9 +2,7 @@
 layout: post
 title:  OpenRefine上手
 tags:
-    - Code
-    - OpenRefine
-    - BigDate
+    - Date Analysis
 ---
 
 本文将讲述OpenRefine是什么，OpenRefine怎么用，以及回答实验留下的问题。
@@ -93,7 +91,7 @@ return "".join([f(x) for x in value]);
 
 ## 参考
 
-[Java Regex](http://docs.oracle.com/javase/tutorial/essential/regex/pre_char_classes.html)
-[OpenRefine Wiki](https://github.com/OpenRefine/OpenRefine/wiki)
-[OpenRefine DOCS](https://github.com/OpenRefine/OpenRefine/wiki/Documentation-For-Users#reference)
-[OpenRefine Jython](https://github.com/OpenRefine/OpenRefine/wiki/Jython)
++ [Java Regex](http://docs.oracle.com/javase/tutorial/essential/regex/pre_char_classes.html)
++ [OpenRefine Wiki](https://github.com/OpenRefine/OpenRefine/wiki)
++ [OpenRefine DOCS](https://github.com/OpenRefine/OpenRefine/wiki/Documentation-For-Users#reference)
++ [OpenRefine Jython](https://github.com/OpenRefine/OpenRefine/wiki/Jython)

@@ -16,7 +16,8 @@ thumbnail: "/img/thumb/uwp.png"
 <!--more-->
 
 # MvvmLight快速上手
-> 最近仍然在学习一些包的用法，这次分享关于MvvmLight的相关用法
+
+最近仍然在学习一些包的用法，这次分享关于MvvmLight的相关用法
 
 ## 关于Mvvm您需要知道
 
@@ -98,7 +99,3 @@ DispatcherHelper.CheckBeginInvokeOnUI(() =>
 ## 后记
 
 就像在一开始说的，本文需要读者预先对一些知识有一定了解，MvvmLight提供了MVVM模式下编程的很多需要使用的模式/解决方案的封装，如果读者本身对MVVM了解就不够多，那么可能看起来就有点云里雾里。
-
-### 我是发牢骚
-
-现在才留意到[亚克力材质](https://docs.microsoft.com/zh-cn/windows/uwp/style/acrylic)的相关说明文章，难受，之前自己用Win2D自己调的半透明啊难受难受。
