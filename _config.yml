@@ -6,7 +6,8 @@ email: jskyzero@outlook.com
 description: "jskyzero's blog"
 keyword: "jskyzero"
 # your host, for absolute URL
-url: "https://jskyzero.github.io"
+url: "https://jskyzero.com"
+# url: "https://jskyzero.github.io"
 # for example, '/blog' if your blog hosted on 'host/blog'
 baseurl: ""                             
 
