@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OpenRefine上手
+title:  工具速览：使用OpenRefine预处理数据
 tags:
     - Date Analysis
 ---

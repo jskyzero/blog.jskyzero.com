@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hello World"
+title: "工具速览：使用Hexo搭建个人博客"
 tags:
     - Tutorial
 ---
