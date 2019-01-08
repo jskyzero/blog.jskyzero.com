@@ -2,7 +2,9 @@
 layout:     post
 title:      计算机科学：字节顺序
 tags:
-    - "File Encoding"
+    - Code
+    - Computer Science
+    - Endianness
 ---
 
 本文将讲述关于编程中可能会遇到并且引起疑惑的字节顺序的相关问题，配合之前关于UTF-8编码的部分一起食用效果更佳。
@@ -32,7 +34,7 @@ data = 0x01020304
 ### 查看字节序
 
 根据字节序的定义，我们只要知道了数据在内存中的保存方式，自然可以很容易的判断它是那种字节序列。这里以C语言描述为例。具体的逻辑可以参考实际代码，如下。
-```C
+```c
 #include <stdio.c> // for printf()
 
 int main() {

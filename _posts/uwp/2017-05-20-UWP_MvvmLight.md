@@ -6,8 +6,7 @@ tags:
     - Code
     - UWP
     - C#
-categories:
-    - UWP
+    - MVVM Light
 thumbnail: "/img/thumb/uwp.png"
 ---
 

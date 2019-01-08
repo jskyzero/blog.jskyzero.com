@@ -3,6 +3,7 @@ layout: post
 title:  工具速览：使用OpenRefine预处理数据
 tags:
     - Date Analysis
+    - Tutorial
 ---
 
 本文将讲述OpenRefine是什么，OpenRefine怎么用，以及回答实验留下的问题。
