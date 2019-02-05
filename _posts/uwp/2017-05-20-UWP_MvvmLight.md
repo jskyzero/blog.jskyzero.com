@@ -36,13 +36,13 @@ thumbnail: "/img/thumb/uwp.png"
 ### ViewModelBase && ObservableObject
 
 嗯这个我们懂的，就是提供一个更新提醒的接口。
-```CSharp
+```csharp
 RaisePropertyChanged(() => Name);
 ```
 ### ViewModelLocator && SimpleIoc
 
 嗯这个就是所谓的IoC容器了我们可以把ViewModel和Server在里面register，然后以后就可以直接getinstance了
-```CSharp
+```csharp
 ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 SimpleIoc.Default.Register<AppViewModel>();
 ```
@@ -53,7 +53,7 @@ SimpleIoc.Default.Register<AppViewModel>();
 
 如果XAML是事件怎么办？嗯你需要使用EventToCommand解决方法
 如
-```XAML
+```xml
 <CheckBox>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Checked">
@@ -70,7 +70,7 @@ SimpleIoc.Default.Register<AppViewModel>();
 ### Messenger
 
 嗯这个就是最重要的消息机制的了，总之一个地方注册一个处理方法，然后就可以消息传递了。
-```CSharp
+```csharp
 Messenger.Default.Register<string>(this, MessageToken.SendMessageToken, (msg) =>
         {
             Msg = msg;
@@ -82,7 +82,7 @@ Messenger.Default.Send<string>(Msg, MessageToken.SendMessageToken);
 ### DispatcherHelper
 
 嗯这个就是我们非UI线程与UI线程通信用的了，大概就是在app.cs里面初始化，然后在需要的时候调用接口就好。
-```CSharp
+```csharp
 DispatcherHelper.Initialize();
 
 DispatcherHelper.CheckBeginInvokeOnUI(() =>
