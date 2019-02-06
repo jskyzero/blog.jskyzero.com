@@ -1,7 +1,7 @@
 {
   "name": "jskyzero-blog",
   "short_name": "jskyzero-blog",
-  "description": "jskyzero's blog",
+  "description": "jskyzero's blog about program & computer science",
   "icons": [{
     "src": "icons/128.png",
     "sizes": "128x128",
