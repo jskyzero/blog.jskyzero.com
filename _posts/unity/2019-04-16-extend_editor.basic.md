@@ -113,6 +113,7 @@ Inspector上是可以显示附上的代码的一些public字段的，对于一�
 
 ## 参考
 
++ [full example: extend-editor](https://github.com/Moons-Project/Unity.ExtendEditor)
 + [ExtendingTheEditor](https://docs.unity3d.com/Manual/ExtendingTheEditor.html)
 + [Immediate Mode GUI (IMGUI)](https://docs.unity3d.com/Manual/GUIScriptingGuide.html)
 + ...
