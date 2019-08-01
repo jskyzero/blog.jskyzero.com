@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  工具速览：使用OpenRefine预处理数据
+header-img: "img/site/bg3.jpg"
 tags:
     - Date Analysis
     - Tutorial

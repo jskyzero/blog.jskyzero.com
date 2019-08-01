@@ -2,12 +2,13 @@
 layout: post
 date: 2017/05/20
 title: UWP：MVVM Light Toolkit介绍
+header-img: "img/posts/uwp.jpg"
 tags:
     - Code
     - UWP
     - C#
     - MVVM Light
-thumbnail: "/img/thumb/uwp.png"
+thumbnail: "/img/thumb/uwp.jpg"
 ---
 
 嗯本文将结合具体代码帮助读者快速上手MvvmLight，我们希望读者已经了解Mvvm/DI/IoC的相关知识

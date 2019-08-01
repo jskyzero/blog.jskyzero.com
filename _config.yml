@@ -1,9 +1,9 @@
 # Site settings
-title: jskyzero-blog
-SEOTitle: jskyzero's blog
+title: jskyzero's blog
+SEOTitle: jskyzero-blog
 header-img: img/site/bg.jpg
 email: jskyzero@outlook.com
-description: "jskyzero's blog about program & computer science"
+description: "是包含了咱的关于编程的各种文章的博客。"
 keyword: "jskyzero"
 # your host, for absolute URL
 url: "https://blog.jskyzero.com"

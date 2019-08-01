@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "工具速览：使用Hexo搭建个人博客"
+header-img: "img/posts/new_year.jpg"
 tags:
     - Tutorial
     - Hexo
