@@ -2,7 +2,6 @@
 layout:     post
 title:      计算机科学：字节顺序
 tags:
-    - Code
     - Computer Science
     - Endianness
 ---

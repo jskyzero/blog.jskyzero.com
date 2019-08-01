@@ -3,7 +3,6 @@ layout: post
 title: "课程总结：腾讯互动娱乐2017年游策公开课"
 header-img: "img/posts/new_year.jpg"
 tags:
-    - Game
     - Game Design
     - Summary
 ---
