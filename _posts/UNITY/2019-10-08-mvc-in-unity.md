@@ -67,10 +67,26 @@ Model層依然存儲數據，不過這裏的數據就是獨立於游戲物體的
 
 可以參考[MVC.DotNet](https://github.com/Moons-Project/MVC.DotNet)。
 
-施工中...
+從具體的代碼一層層開始談起吧。
 
-<!-- 本質上是利用類 -->
++ Model-View-Controller
+    + Model: 普通類（結構體）
+    + View: 繼承Behavior，視遊戲引擎接口而定
+    + Controller: 對應具體Model View，且保存其引用；
+        + 繼承Caller允許根據Command類型調用不同Command
++ Command-Caller-Core
+    + Command：虛函數GetController
+    + Caller：繼承Behavior，含通用的調用Command方法Call，實現交由Core部分處理
+    + Core：核心部分
+        + 保存所有View、Model、Controller、Command對應邏輯，使用Dict，用Type做Key
+        + 對於Command調用，首先拿到Controller
+            + 第一次使用，如果不存在，則去創造
+        + 然後使用反射找到OnCommand邏輯
+        + 提供通過字符名直接反射找到方法
++ Exception, etc.
+    + Exception，外圍異常類，放置需要額外操作。
 
+### 語法細節
 
-
+建議直接閱讀源碼和MSDN相關參考，這裡不展開來說了。
 
