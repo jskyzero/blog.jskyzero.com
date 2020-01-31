@@ -1,6 +1,6 @@
 # Site settings
 title: jskyzero's blog
-SEOTitle: jskyzero-blog
+SEOTitle: jskyzero's blog
 header-img: img/site/bg.jpg
 email: jskyzero@outlook.com
 description: "是包含了咱的关于编程的各种文章的博客。"
@@ -9,7 +9,7 @@ keyword: "jskyzero"
 url: "https://blog.jskyzero.com"
 # url: "https://jskyzero.github.io"
 # for example, '/blog' if your blog hosted on 'host/blog'
-baseurl: ""                             
+baseurl: ""
 
 # Publish posts or collection documents with a future date.
 future: true

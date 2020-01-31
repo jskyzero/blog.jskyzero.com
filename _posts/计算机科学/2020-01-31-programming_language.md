@@ -1,0 +1,14 @@
+---
+layout:     post
+title:      计算机科学：編程語言學習路徑
+tags:
+    - Computer Science
+---
+
+本文試圖論述明確如何學習一門編程語言，用以以後學習的參考。
+
+<!--more-->
+
+![概覽圖](https://lh3.googleusercontent.com/O_vSXk6pFPvauwz3jwPbVn7jpRmozaWhfksbEFpjq98_SsLveMIsJOBabW58XmVpIMi_Dj12mvV4An7fdOK7XMjjuczr_130UkL_GcTiDxuH7WwRonoI9DHLpCV5LqrU5lHAFOMxFu-5u3g2Yhx4or8IbY_8cO4bpuq6ioV3Dvqzu0zDUq7U3sMB1jYEihjX2W6_P4ixqcOkyMJNfDdyuouScDE3mnAiGpvrpPVL6AwXF71mMafEKnYJMVWq0ZHo1IotRXXiQYEPJU0kAjuSB1d9MjRJkyQujFWTTWEWIbnKLhgWqOW3D1TJGLkOWl9GRTuxEM0p5t3HzTPWShgUFdLiQYOnwdN5poUK1FDSBcC2QK_0qo6fGku5aQXGN4xflDn5V9rIx826EpWaqwyTBZ-HIA0RQx8_VO33m-nQSz9trRSDc_4pGeu5XPJmM-CBkseoqJXFgmxHllsQGjsuLP-YsKeZf4tpcUgrzJZU6T5jkl6WxExUP7fsDHqan_h-mTIRTFR26z9Gi2fDoX5gfT-HyeEkoSEqBR8ASKF0PQUsbNG139-O6WPNo9dHPJMu4ZQpbEmplFVJAMLVKAILDHhrAw-t5nl5OH7hLGOrcPOxeJcF2PAMZt6wL-1A5YGocHAKTWCm22AVnaNvDYLuFJLbACG3epygNW9WxS-8c8NWtdPd1TmkfZrgwV12FuyCaYD86GQPWWOAk0COtS5DywMki18lEok2RtwbPLN_XzvufamlOQ=w1480-h998-no)
+
+以下施工中...
