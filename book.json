@@ -1,4 +1,9 @@
 {
+  "title": "通俗笔记 / Common Notes",
+  "description": "本系列文档将聚焦于记录一些跨学科间的通俗知识，一些更加通用的思维方式与道理。",
+  "structure": {
+    "readme": "README.md"
+  },
   "plugins": [
     "summary"
   ]

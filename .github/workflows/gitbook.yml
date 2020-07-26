@@ -36,7 +36,10 @@ jobs:
 
 
     - name : GitBook Build
-      run: npm run publish-gitbook
+      run: |
+        npm run publish-gitbook
+        npm run publish-gitbook
+
 
 
     - name: Commit files

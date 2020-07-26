@@ -1,4 +1,5 @@
 ---
+title: 123
 description: 学习使人伟大。 / Learning Makes Person Great.
 ---
 
