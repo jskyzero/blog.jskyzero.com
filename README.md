@@ -1,5 +1,5 @@
 ---
-title: 123
+author: jskyzero
 description: 学习使人伟大。 / Learning Makes Person Great.
 ---
 
@@ -26,6 +26,11 @@ description: 学习使人伟大。 / Learning Makes Person Great.
 传统的富文本文档记录方式这里就不再赘述。
 
 ## 更新计划
+
+本仓库的更新计划并不激进，也没有确切的更新评率。
+
+大体方针上：
+
 
 + 有新的内容，则有新的记录文章
 + 时间相对灵活，没有固定跟新计划
