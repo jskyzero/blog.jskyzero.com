@@ -19,7 +19,7 @@ description: 学习使人伟大。 / Learning Makes Person Great.
 
 | 名字 | 内容 | 工具 |
 | ---- | ---- | ---- |
-|[设计者笔记](https://design.jskyzero.com/)|游戏设计与制作|Markdown / Jekyll / Github Pages|
+|[designer notes](https://design.jskyzero.com/)|游戏设计与制作|Markdown / Jekyll / Github Pages|
 |[jskyzero's blog](https://blog.jskyzero.com/)|计算机科学|Markdown / Jekyll / Github Pages|
 |[jskyzero.com](https://www.jskyzero.com/)|自我介绍|Rich Text / Google Pages|
 
