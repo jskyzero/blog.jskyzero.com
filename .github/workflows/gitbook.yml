@@ -50,6 +50,8 @@ jobs:
 
     - name: Commit files
       run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         rm .git -rf; cd _book ; git init
         git add -A
         git commit -m "Add changes"
