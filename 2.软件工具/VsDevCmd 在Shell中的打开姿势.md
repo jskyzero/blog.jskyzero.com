@@ -11,7 +11,9 @@ tags:
 
 <!--more-->
 
-# VsDevCmd在PowerShell中的打开姿势
+# VsDevCmd 在Shell中的打开姿势
+`jskyzero` `2017/05/31`
+
 
 看完本文，您将可以在PowerShell自定义运行Visual Studio 2017 的VsDevCmd.bat，在命令行编译/调试的时候还是挺方便的。
 

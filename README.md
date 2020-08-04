@@ -1,7 +1,6 @@
 ---
 layout:     post
 title:      "站点存在的意义"
-subtitle:   "不太好预测这个博客最后会被玩成什么样子呢2333"
 header-img: "img/posts/new_year.jpg"
 tags:
     - Me
@@ -11,18 +10,32 @@ tags:
 
 <!--more-->
 
-# 这个博客的简介
+# 概览 / Overview
+`jskyzero` `2020/08/04`
 
-本博客为jskyzero所建，用来分享编程相关的内容，之前的博客简介是 ~~`编程相关的知识，ACGN的感动，关于生活的杂谈`~~，现在已经删删改改变得只愿意放编程相关的内容了。
+本博客为 jskyzero 所建，用来分享编程与计算机科学相关的内容。
 
-嘛，很多都是需要慢慢补充的总结性文章，一般会附有出处和参考，能帮到看到的人就是最大的满足了。
 
-最后附上可爱的ClariS妹子们~
+```C++
+otaku.change(world); // by jskyzero
+```
 
-![](http://www.clarismusic.jp/images/enter/img_main.png)
+## 结构 / Structure
+
+
+```
++ 0.博客介绍               // 基础情况的介绍
++ 1.编程语言               // 编程语言的语法、最佳实践
++ 2.软件工具               // 辅助工具的使用、参考
++ 3.计算机科学             // 学科相关
++ 专题-UNITY              // UNITY与游戏开发
++ 专题-UWP                // WINDOWS与UWP
+```
+
 
 ## 更新日志
 
++ 2020/08/04 Update：使用gitbook重新整理了博客。
 + 2019/08/01 Update：准备将一些放弃的梦想整理出来。
 + 2019/04/22 Update：重新分析应该把内容放在哪里。
     + README: 项目的简短介绍
@@ -43,3 +56,10 @@ tags:
     1. Because I can.
     2. 想要确实的记录点什么，知识也好，感触也罢。
 + 2016/12/30：会把很多markdown里面的东西归档过来吧...不过会慢慢来...
+
+
+## ClariS
+
+最后附上可爱的ClariS的近照~
+
+![](https://www.clarismusic.jp/images/enter/img_main.png)

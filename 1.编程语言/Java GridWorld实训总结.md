@@ -11,7 +11,8 @@ tags:
 
 <!--more-->
 
-# Java: GridWorld实训总结
+# Java-GridWorld实训总结
+`jskyzero` `2017/03/19`
 
 ## 阶段1：项目启动
 >  本阶段主要是为实训项目做基本的技术准备，学会使用Vi, JAVA, Ant和Junit, 以及熟悉GridWorld的使用，并完成指定的任务。

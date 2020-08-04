@@ -11,7 +11,8 @@ gitmoji给你的git提交信息提供了一个分类和装饰的作用，本文�
 
 <!--more-->
 
-# gitmoji让你的提交日志更可读
+# gitmoji 让你的提交日志更可读
+`jskyzero` `2020/08/01`
 
 ## 为什么要使用gitmoji
 
