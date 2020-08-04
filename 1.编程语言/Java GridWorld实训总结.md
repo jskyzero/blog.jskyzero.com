@@ -11,7 +11,7 @@ tags:
 
 <!--more-->
 
-# Java-GridWorld实训总结
+# Java GridWorld实训总结
 `jskyzero` `2017/03/19`
 
 ## 阶段1：项目启动

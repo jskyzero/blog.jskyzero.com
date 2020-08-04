@@ -10,7 +10,7 @@ tags:
 
 <!--more-->
 
-# 使用Hexo搭建个人博客
+# Hexo 搭建个人博客
 `jskyzero` `2017/01/19`
 
 > 致谢：感谢Mesekovic，AT，和 [hexo-theme-material](https://github.com/viosey/hexo-theme-material) 主题的开发者们。
