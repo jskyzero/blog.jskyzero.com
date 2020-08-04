@@ -29,6 +29,8 @@ jobs:
 
     - name: Checkout Branches
       run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
         git fetch origin gitbook-template
         git checkout -t origin/gitbook-template
         git merge -X theirs origin/blog --allow-unrelated-histories
@@ -50,8 +52,6 @@ jobs:
     - name: Commit files
       run: |
         rm .git -rf; cd _book ; git init
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
         git add -A
         git commit -m "Add changes"
         cd ../
