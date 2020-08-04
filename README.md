@@ -17,13 +17,13 @@ tags:
 
 
 ```C++
-otaku.change(world); // by jskyzero
+otaku.change(world);      // by jskyzero
 ```
 
 ## 结构 / Structure
 
 
-```
+```C++
 + 0.博客介绍               // 基础情况的介绍
 + 1.编程语言               // 编程语言的语法、最佳实践
 + 2.软件工具               // 辅助工具的使用、参考
