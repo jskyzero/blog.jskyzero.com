@@ -5,9 +5,9 @@ name: reveal-md CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ blog ]
   pull_request:
-    branches: [ master ]
+    branches: [ blog ]
 
 jobs:
   build:
@@ -37,6 +37,8 @@ jobs:
 
     - name : GitBook Build
       run: |
+        git fetch origin blog
+        git merge -X theirs origin/blog --allow-unrelated-histories
         npm run publish-gitbook
         npm run publish-gitbook
 
@@ -55,7 +57,7 @@ jobs:
     - name: GitHub Push
       uses: ad-m/github-push-action@v0.6.0
       with:
-        branch: gh-pages
+        branch: master
         directory: _book
         force: true
         github_token: ${{ secrets.GITHUB_TOKEN }}
