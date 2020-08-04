@@ -8,6 +8,8 @@ header-img: "img/posts/extend-editor.png"
 
 唔，稍微聊一下unity中扩展编辑器的相关内容。
 
+# UNITY：擴展編輯器
+
 ## 前置问题
 
 ### 为什么要用unity
@@ -16,7 +18,7 @@ header-img: "img/posts/extend-editor.png"
 
 比如相对而言对“小白”更友好，更符合直观逻辑等，不过可能主要还是最近工作使用的是Unity引擎，毕竟屁股决定脑袋。
 
-![]({{site.url}}/img/unity/3.png)
+![](./../.assets/img/unity/3.png)
 
 但是对于一个入门的新人来讲，不总是需要挑一个来用用看的吗，所以选Unity也还不错。
 
@@ -34,7 +36,7 @@ header-img: "img/posts/extend-editor.png"
 
 ## ImGUI概述
 
-![]({{site.url}}/img/unity/2.png)
+![](../.assets/img/unity/2.png)
 
 咱也算是写过诸如Web，UWP等等等UI系统的，然后Unity里面的这套管叫ImGUI，名字的意识大概是立即UI，是给个返回值的那套UI，所以我们要记得最后把值赋值回去。
 
@@ -42,7 +44,7 @@ header-img: "img/posts/extend-editor.png"
 
 Inspector上是可以显示附上的代码的一些public字段的，对于一些复杂的数据类型的实例，或者对于一些我们希望自定义渲染行为的数据，还是有方法可以自定义他的渲染过程的。
 
-![]({{site.url}}/img/unity/1.png)
+![](./../.assets/img/unity/1.png)
 
 大概的思路是实现一个继承于`PropertyDrawer`的渲染特定数据类型的实例，并重写函数实现对应的渲染过程，贴个例子代码：
 ```csharp
