@@ -14,3 +14,8 @@ tags:
 
 以下按照需求简要对软件进行分类
 
+## Windows常用指令
+
++ OneDrive 删除注册表
+`HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace`
+
