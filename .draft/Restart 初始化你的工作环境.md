@@ -18,4 +18,6 @@ tags:
 
 + OneDrive 删除注册表
 `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace`
++ Create Big File (50MB)
+`fsutil file createnew test.txt 52428800` 
 
