@@ -5,7 +5,8 @@
     "readme": "README.md"
   },
   "plugins": [
-    "summary"
+    "summary",
+    "-lunr", "-search", "search-pro"
   ],
   "pluginsConfig": {
     "theme-default": {
