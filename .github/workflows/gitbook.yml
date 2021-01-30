@@ -17,7 +17,8 @@ jobs:
     strategy:
       matrix:
         # node-version: [10.x, 12.x, 14.x]
-        node-version: [10.21.0]
+        node-version: [12.x]
+
 
     steps:
     - uses: actions/checkout@v2
@@ -26,13 +27,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Checkout Branches
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git fetch origin gitbook-template
-        git checkout -t origin/gitbook-template
-        git merge -X theirs origin/blog --allow-unrelated-histories
 
     - name: Install dependencies
       run: |
@@ -43,6 +37,8 @@ jobs:
 
     - name : GitBook Build
       run: |
+        # git fetch origin blog
+        # git merge -X theirs origin/blog --allow-unrelated-histories
         npm run publish-gitbook
         npm run publish-gitbook
 

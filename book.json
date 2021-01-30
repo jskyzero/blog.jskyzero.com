@@ -1,0 +1,16 @@
+{
+  "title": "jskyzero's blog",
+  "description": "本博客为jskyzero所建，用来分享编程相关的内容",
+  "structure": {
+    "readme": "README.md"
+  },
+  "plugins": [
+    "summary",
+    "-lunr", "-search", "search-pro"
+  ],
+  "pluginsConfig": {
+    "theme-default": {
+        "showLevel": true
+    }
+}
+}
