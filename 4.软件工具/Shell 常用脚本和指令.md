@@ -60,5 +60,8 @@ sudo nano  /etc/apt/apt.conf
 Acquire::http::Proxy "http://:@192.168.199.229:7890";
 Acquire::https::Proxy "http://:@192.168.199.229:7890";
 ```
-+ 
++ gem install proxy
+```
+sudo gem install -p http://127.0.0.1:7890 github-linguist
+```
 
