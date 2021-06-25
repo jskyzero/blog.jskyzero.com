@@ -64,8 +64,6 @@ tags:
 ```
 看起来大概如下所示：
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 <div class="mt-3 mx-auto p-3 border border-primary" style="width: 600px;">
     <p class="text-center">技能概率计算</p>
     <div class="input-group mb-3">
