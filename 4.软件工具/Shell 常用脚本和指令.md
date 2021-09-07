@@ -52,3 +52,16 @@ Write-Output "Using JskyLibVB.MathVB"
 + Create Big File (50MB)
 `fsutil file createnew test.txt 52428800` 
 
+## Linux
+
++ apt proxy
+```
+sudo nano  /etc/apt/apt.conf
+Acquire::http::Proxy "http://:@192.168.199.229:7890";
+Acquire::https::Proxy "http://:@192.168.199.229:7890";
+```
++ gem install proxy
+```
+sudo gem install -p http://127.0.0.1:7890 github-linguist
+```
+
