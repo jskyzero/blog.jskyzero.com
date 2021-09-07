@@ -6,11 +6,15 @@
   },
   "plugins": [
     "summary",
-    "-lunr", "-search", "search-pro"
+    "-lunr", "-search", "search-pro",
+    "forkmegithub"
   ],
   "pluginsConfig": {
     "theme-default": {
         "showLevel": true
+    },
+    "forkmegithub": {
+      "url": "https://github.com/jskyzero/blog.jskyzero.com"
     }
 }
 }
