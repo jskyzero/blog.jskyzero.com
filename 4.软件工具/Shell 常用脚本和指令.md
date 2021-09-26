@@ -52,6 +52,9 @@ Write-Output "Using JskyLibVB.MathVB"
 + Create Big File (50MB)
 `fsutil file createnew test.txt 52428800` 
 
++ Powershll prompt
+`function prompt {"~: "}`
+
 ## Linux
 
 + apt proxy
