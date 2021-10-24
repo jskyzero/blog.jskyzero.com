@@ -53,7 +53,11 @@ Write-Output "Using JskyLibVB.MathVB"
 `fsutil file createnew test.txt 52428800` 
 
 + Powershll prompt
-`function prompt {"~: "}`
+```
+notepad $PROFILE
+function prompt {"~: "}
+function prompt { "PS " + $( Get-Location | split-path -leaf ) + ": " }
+```
 
 ## Linux
 
