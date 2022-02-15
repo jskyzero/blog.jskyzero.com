@@ -59,6 +59,15 @@ function prompt {"~: "}
 function prompt { "PS " + $( Get-Location | split-path -leaf ) + ": " }
 ```
 
++ WSL
+```
+wsl --shutdown
+wsl --export <Distro> <FileName>
+wsl --import <Distro> <InstallLocation> <FileName> [Options]
+wsl --distribution, -d <Distro>
+wsl --set-default, -s <Distro>
+```
+
 ## Linux
 
 + apt proxy
