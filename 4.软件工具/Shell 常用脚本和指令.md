@@ -66,6 +66,7 @@ wsl --export <Distro> <FileName>
 wsl --import <Distro> <InstallLocation> <FileName> [Options]
 wsl --distribution, -d <Distro>
 wsl --set-default, -s <Distro>
+# \HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Lxss DefaultUid Dec 1000
 ```
 
 ## Linux
