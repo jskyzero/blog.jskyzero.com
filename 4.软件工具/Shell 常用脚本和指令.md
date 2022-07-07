@@ -51,8 +51,11 @@ Write-Output "Using JskyLibVB.MathVB"
 `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace`
 + Create Big File (50MB)
 `fsutil file createnew test.txt 52428800` 
++ Create Big File (5GB)
+`[System.IO.Path]::GetTempFileName() | % { [System.IO.File]::Create($_).SetLength(5gb).Close;$_ } | ? { $_ }`
 + nvidia experience 下载目录 
 `C:\ProgramData\NVIDIA Corporation\Downloader`
+
 
 + Powershll prompt
 ```
