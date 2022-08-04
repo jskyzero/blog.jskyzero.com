@@ -87,3 +87,9 @@ Acquire::https::Proxy "http://:@192.168.199.229:7890";
 sudo gem install -p http://127.0.0.1:7890 github-linguist
 ```
 
+## Python
+
++ 水平速度、落地夹角已知，求下落速度
+```python
+math.tan(math.radians(10))
+```
