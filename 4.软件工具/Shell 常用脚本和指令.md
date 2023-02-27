@@ -93,3 +93,10 @@ sudo gem install -p http://127.0.0.1:7890 github-linguist
 ```python
 math.tan(math.radians(10))
 ```
+
+## ffmpeg
+
++ 合并视频&音频
+```
+ffmpeg -i video.mp4 -i audio.wav -c copy output.mkv
+```
