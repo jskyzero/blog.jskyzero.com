@@ -100,3 +100,12 @@ math.tan(math.radians(10))
 ```
 ffmpeg -i video.mp4 -i audio.wav -c copy output.mkv
 ```
+
+## draw.io
++ [config for image size ](https://github.com/jgraph/drawio/issues/1887)
+```
+{
+"maxImageSize": "10000",
+"maxImageBytes": "30000000"
+}
+```
