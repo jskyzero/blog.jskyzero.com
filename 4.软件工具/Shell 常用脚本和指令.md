@@ -94,6 +94,15 @@ sudo gem install -p http://127.0.0.1:7890 github-linguist
 math.tan(math.radians(10))
 ```
 
+## ImageMagick
+
+```
+sudo apt install imagemagick
+sudo vi /etc/ImageMagick-6/policy.xml
+convert *.png -quality 90 *.jpg
+convert *.jpg mydoc.pdf
+```
+
 ## ffmpeg
 
 + 合并视频&音频
