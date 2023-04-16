@@ -6,7 +6,9 @@
 ## 2.编程语言
 
 - [C++ 模板元編程](2.编程语言/C++ 模板元編程.md)
+- [HTML 编写静态网页工具](2.编程语言/HTML 编写静态网页工具.md)
 - [Java GridWorld实训总结](2.编程语言/Java GridWorld实训总结.md)
+- [Python 富文本转CSV](2.编程语言/Python 富文本转CSV.md)
 - [Python 配置数据表](2.编程语言/Python 配置数据表.md)
 - [编程语言学习路径](2.编程语言/编程语言学习路径.md)
 
