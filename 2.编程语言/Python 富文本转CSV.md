@@ -6,7 +6,7 @@ tags:
     - Tools
 ---
 
-最近遇到的数据处理问题，做个记录，以后可以再此基础上修改为其他文本处理程序！
+最近遇到的数据处理问题，做个记录，以后可以在此基础上修改为其他文本处理程序！
 
 
 # Python 富文本转CSV格式
@@ -19,7 +19,7 @@ tags:
 
 研究了一下`github`自带的`jekyll`是可以用`_data/*.csv`来实现数据导入的，再自己随便写点`jekyll`的模板就完事了。使用csv格式，我们就可以来使用类excel的表格工具管理编辑数据，不错。
 
-问题又来到了如何将现有网站上的信息转化到csv格式，手动吗？约200篇文章，手动多少有点费事，还是写个中转工具吧，就决定是你了，Python启动！
+问题又来到了如何将现有网站上的信息转化到csv格式，手动吗？约200篇文章，手动多少有点费事，还是写个中转工具吧，就决定是你了，Python！
 
 
 ## 控制流模型
@@ -31,7 +31,7 @@ tags:
 ![](https://mermaid.ink/svg/pako:eNqrVkrOT0lVslJKy8kvT85ILCpR8AmKyVMAAsfo53snvly4NVZBV9eu5umS3qcd255vmvFiy5YaBafop-t7nk1rfzZnTSxEtRNYVUBlSUZ-3tMlLc8ntNUoOEc7B4c9W7Dn6Z5-oNrnqxcA1SrpKOWmFuUmZqYALa0G6Y1RKslIzU2NUbICMlNS0xJLc0pilGLyaoFKE0tL8oMr85KVrEqKSlN1lEoLUhJLUl0yE9OLEnOVrNISc4pTawGaVlE6)
 
 
-继续用用面向过程的方式来描述的化，Python的控制流大概是这样子的：
+继续用用面向过程的方式来描述的话，Python的控制流大概是这样子的：
 
 <!-- https://mermaid.live/edit#pako:eNotTr8OwUAcfpXLb-YFOkio0URi6Rku7RVJ_0hdI6Ld0IXU0loMJJhQMQl9HHc8hpP6pi_fv3wT0F2DggKm5Y70HvEYajSxgySq2id78tmBZwuRRmJz6qByuRLwZfLZ_ZUA1TR-Xr9Px9f9xvfT92ou4hWPU5FcxfLSKYZqRS_LefQIkKqprbbY5jyPpQ8lsKlnk74hP0x-eQysR22KQZHUoCbxLYYBO6GMEp-5rbGjg8I8n5bAHxiE0XqfdD1ig2ISa0jDL1EhXYQ -->
 
@@ -69,7 +69,7 @@ def read(self, file_path):
 
 + 文本类的文本处理
 
-这里有一个有意思的工具方法，slice，将字符串进行切分，再对切分后的字符串进行一次切片操作，以此来快速将富文本中的关键信息提取出来。
+这里有一个有意思的工具方法，slice，将字符串进行切分，再对切分后的字符串进行一次切片操作，以此来快速将字符串中的关键信息提取出来。
 
 ```Python
     def __init__(self, line, section):
