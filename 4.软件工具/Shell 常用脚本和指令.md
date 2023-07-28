@@ -109,6 +109,14 @@ convert *.jpg mydoc.pdf
 ```
 ffmpeg -i video.mp4 -i audio.wav -c copy output.mkv
 ```
++ Cut
+```
+# from to
+ffmpeg -i input.mp4 -ss 00:05:10 -to 00:15:30 -c:v copy -c:a copy output2.mp4
+# duration
+ffmpeg -i input.mp4 -ss 00:05:20 -t 00:10:00 -c:v copy -c:a copy output1.mp4
+```
+
 
 ## draw.io
 + [config for image size ](https://github.com/jgraph/drawio/issues/1887)
