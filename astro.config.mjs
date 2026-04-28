@@ -38,6 +38,9 @@ export default defineConfig({
         { icon: 'github', label: 'GitHub', href: 'https://github.com/jskyzero/blog.jskyzero.com' },
       ],
       customCss: ['./src/styles/custom.css'],
+      markdown: {
+        headingLinks: false,
+      },
       components: {
         Header: './src/components/Header.astro',
         Footer: './src/components/Footer.astro',
