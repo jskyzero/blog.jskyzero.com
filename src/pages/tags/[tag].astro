@@ -20,8 +20,8 @@ const posts = (await getCollection('posts'))
 ---
 
 <BaseLayout title={`标签: ${tag}`}>
-  <h1 style="font-size: var(--sl-text-3xl); margin-bottom: 0.5rem; font-weight: 700;">标签: {tag}</h1>
-  <p style="color: var(--sl-color-text-muted); margin-bottom: 1.5rem;">{posts.length} 篇文章</p>
+  <h1>标签: {tag}</h1>
+  <p class="page-description">{posts.length} 篇文章</p>
   <ul class="posts-list">
     {posts.map(post => (
       <li class="post-item">

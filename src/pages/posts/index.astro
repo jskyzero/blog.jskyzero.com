@@ -8,7 +8,8 @@ const posts = (await getCollection('posts'))
 ---
 
 <BaseLayout title="全部文章">
-  <h1 style="font-size: var(--sl-text-3xl); margin-bottom: 1.5rem; font-weight: 700;">全部文章</h1>
+  <h1>全部文章</h1>
+  <p class="page-description">{posts.length} 篇文章</p>
   <ul class="posts-list">
     {posts.map(post => (
       <li class="post-item">

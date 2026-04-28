@@ -14,8 +14,8 @@ const tags = [...tagMap.entries()].sort((a, b) => b[1] - a[1]);
 ---
 
 <BaseLayout title="标签">
-  <h1 style="font-size: var(--sl-text-3xl); margin-bottom: 0.5rem; font-weight: 700;">标签</h1>
-  <p style="color: var(--sl-color-text-muted); margin-bottom: 1.5rem;">{tags.length} 个标签</p>
+  <h1>标签</h1>
+  <p class="page-description">{tags.length} 个标签</p>
   <div class="tags-cloud">
     {tags.map(([tag, count]) => (
       <a href={`/tags/${tag}`} class="tag-cloud-item">

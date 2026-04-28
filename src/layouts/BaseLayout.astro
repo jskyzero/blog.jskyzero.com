@@ -14,7 +14,7 @@ const { title, description, image } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description || `${title} - jskyzero's blog`} />
-    <title>{title} - jskyzero's blog</title>
+    <title>{title === "jskyzero's blog" ? title : `${title} - jskyzero's blog`}</title>
 
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description || `${title} - jskyzero's blog`} />
@@ -41,18 +41,17 @@ const { title, description, image } = Astro.props;
           <a href="/posts">文章</a>
           <a href="/tags">标签</a>
           <a href="https://github.com/jskyzero/blog.jskyzero.com">GitHub</a>
-          <button class="theme-toggle" id="theme-toggle" aria-label="切换主题">
-            <span class="theme-icon-light">☀</span>
-            <span class="theme-icon-dark">☾</span>
-          </button>
+          <button class="theme-toggle" id="theme-toggle" aria-label="切换主题">☀</button>
         </div>
       </div>
     </header>
     <main>
-      <slot />
+      <div class="content-panel">
+        <slot />
+      </div>
     </main>
     <footer class="site-footer">
-      <p>&copy; {new Date().getFullYear()} jskyzero. Powered by <a href="https://astro.build">Astro</a> &amp; <a href="https://starlight.astro.build">Starlight Design</a>.</p>
+      <p>© {new Date().getFullYear()} jskyzero</p>
     </footer>
 
     <script>
@@ -60,14 +59,10 @@ const { title, description, image } = Astro.props;
         const btn = document.getElementById('theme-toggle');
         if (!btn) return;
 
-        const iconLight = btn.querySelector('.theme-icon-light');
-        const iconDark = btn.querySelector('.theme-icon-dark');
-
         function setTheme(theme) {
           document.documentElement.setAttribute('data-theme', theme);
           localStorage.setItem('sl-theme', theme);
-          if (iconLight) iconLight.style.display = theme === 'dark' ? 'inline' : 'none';
-          if (iconDark) iconDark.style.display = theme === 'dark' ? 'none' : 'inline';
+          btn.textContent = theme === 'dark' ? '☀' : '☾';
         }
 
         const current = document.documentElement.getAttribute('data-theme') || 'dark';
