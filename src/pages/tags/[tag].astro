@@ -1,41 +1,95 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
+  const docs = await getCollection('docs');
   const tagSet = new Set<string>();
-  for (const post of posts) {
-    for (const tag of post.data.tags) {
+  for (const doc of docs) {
+    for (const tag of doc.data.tags || []) {
       tagSet.add(tag);
     }
   }
-  return [...tagSet].map(tag => ({ params: { tag } }));
+  return [...tagSet].map(tag => ({ params: { tag: encodeURIComponent(tag) } }));
 }
 
 const { tag } = Astro.params;
-const posts = (await getCollection('posts'))
-  .filter(p => !p.data.draft && p.data.tags.includes(tag))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const decodedTag = decodeURIComponent(tag || '');
+const docs = await getCollection('docs');
+const posts = docs
+  .filter(d => d.data.date && (d.data.tags || []).some((t: string) => encodeURIComponent(t) === tag))
+  .sort((a, b) => (b.data.date?.getTime() || 0) - (a.data.date?.getTime() || 0));
 ---
 
-<BaseLayout title={`标签: ${tag}`}>
-  <h1>标签: {tag}</h1>
-  <p class="page-description">{posts.length} 篇文章</p>
-  <ul class="posts-list">
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>标签: {decodedTag} - jskyzero's blog</title>
+  <style>
+    :root {
+      --bg: hsl(0, 20%, 99%);
+      --text: hsl(0, 1%, 39%);
+      --text-strong: hsl(0, 5%, 12%);
+      --text-weak: hsl(0, 1%, 60%);
+      --border: hsl(0, 1%, 85%);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: hsl(0, 9%, 7%);
+        --text: hsl(0, 4%, 71%);
+        --text-strong: hsl(0, 15%, 94%);
+        --text-weak: hsl(0, 2%, 49%);
+        --border: hsl(0, 4%, 23%);
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      font-size: 14px;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 3rem;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 1rem 1.5rem; }
+    }
+    h1 { font-size: 26px; font-weight: 500; color: var(--text-strong); margin-bottom: 0.5rem; }
+    .desc { color: var(--text-weak); margin-bottom: 1.5rem; }
+    .post-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .post-item:last-child { border-bottom: none; }
+    .post-item h2 { font-size: 16px; font-weight: 500; margin-bottom: 0.25rem; }
+    .post-item h2 a { color: var(--text-strong); text-decoration: none; }
+    .post-item h2 a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .post-item-meta { font-size: 13px; color: var(--text-weak); }
+    .back-link { display: inline-block; margin-top: 2rem; font-size: 13px; color: var(--text-strong); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>标签: {decodedTag}</h1>
+    <p class="desc">{posts.length} 篇文章</p>
     {posts.map(post => (
-      <li class="post-item">
-        <h2><a href={`/posts/${post.slug}`}>{post.data.title}</a></h2>
+      <div class="post-item">
+        <h2><a href={`/posts/${post.slug.replace(/^posts\//, '')}`}>{post.data.title}</a></h2>
         <div class="post-item-meta">
-          <time datetime={post.data.date.toISOString()}>
-            {post.data.date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
-          </time>
-          <span>{post.data.category}</span>
+          {post.data.date && (
+            <time datetime={post.data.date.toISOString()}>
+              {post.data.date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+          )}
         </div>
-        {post.data.description && (
-          <p class="post-item-desc">{post.data.description}</p>
-        )}
-      </li>
+      </div>
     ))}
-  </ul>
-</BaseLayout>
+    <a href="/tags" class="back-link">← 返回标签列表</a>
+  </div>
+</body>
+</html>

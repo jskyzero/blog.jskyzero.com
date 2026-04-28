@@ -1,0 +1,82 @@
+---
+const { lang, editUrl, lastUpdated } = Astro.locals.starlightRoute;
+---
+
+<footer class="doc">
+  <div class="meta sl-flex">
+    <div>
+      {
+        editUrl && (
+          <a href={editUrl} target="_blank" rel="noopener noreferrer" class="sl-flex">
+            <svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+            Edit page
+          </a>
+        )
+      }
+    </div>
+    <div>
+      <p>&copy; {new Date().getFullYear()} jskyzero</p>
+      {
+        lastUpdated && (
+          <p title="Last updated">
+            Last updated: <time datetime={lastUpdated.toISOString()}>
+              {lastUpdated.toLocaleDateString(lang, { dateStyle: 'medium', timeZone: 'UTC' })}
+            </time>
+          </p>
+        )
+      }
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer.doc {
+    margin-top: 3rem;
+    border-top: 1px solid var(--color-border-weak);
+  }
+
+  .meta {
+    gap: 0.75rem 3rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-block: 3rem 1.5rem;
+    font-size: var(--sl-text-sm);
+  }
+
+  @media (min-width: 30rem) {
+    .meta {
+      flex-direction: row;
+    }
+  }
+
+  .doc a,
+  .doc p {
+    padding-block: 0.125rem;
+  }
+
+  .doc a {
+    gap: 0.4375rem;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-text-weak);
+    font-size: var(--sl-text-sm);
+  }
+
+  .doc a:hover {
+    color: var(--color-text-strong);
+  }
+
+  .doc a svg {
+    opacity: 0.85;
+  }
+
+  .doc p {
+    color: var(--color-text-weak);
+  }
+
+  @media (min-width: 30rem) {
+    .doc p {
+      text-align: right;
+    }
+  }
+</style>

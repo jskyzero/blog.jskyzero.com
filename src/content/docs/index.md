@@ -1,0 +1,20 @@
+---
+title: "jskyzero's blog"
+description: 用来分享编程与计算机科学相关的内容。
+template: splash
+hero:
+  tagline: 用来分享编程与计算机科学相关的内容。
+---
+
+欢迎来到 jskyzero 的个人博客。本博客用来分享编程与计算机科学相关的内容。
+
+## 结构
+
+```text
++ 博客介绍               // 基础情况的介绍
++ 编程语言               // 编程语言的语法、最佳实践
++ 软件工具               // 辅助工具的使用、参考
++ 计算机科学             // 学科相关
++ 专题-UNITY              // UNITY与游戏开发
++ 专题-UWP                // WINDOWS与UWP
+```

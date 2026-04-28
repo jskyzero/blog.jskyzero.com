@@ -9,9 +9,8 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.0.0",
-    "@astrojs/rss": "^4.0.0",
-    "astro": "^5.0.0",
-    "astro-expressive-code": "^0.41.7"
+    "@astrojs/starlight": "^0.34.3",
+    "astro": "^5.7.13",
+    "zod": "^3.25.76"
   }
 }

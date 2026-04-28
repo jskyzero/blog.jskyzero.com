@@ -1,36 +1,37 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('posts'))
-  .filter(p => !p.data.draft)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const docs = await getCollection('docs');
+const posts = docs
+  .filter(d => d.data.date)
+  .sort((a, b) => (b.data.date?.getTime() || 0) - (a.data.date?.getTime() || 0));
 ---
 
-<BaseLayout title="全部文章">
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>全部文章 - jskyzero's blog</title>
+  <meta http-equiv="refresh" content="0;url=/" />
+</head>
+<body></body>
+</html>
+
+<div hidden>
   <h1>全部文章</h1>
-  <p class="page-description">{posts.length} 篇文章</p>
-  <ul class="posts-list">
+  <p>{posts.length} 篇文章</p>
+  <ul>
     {posts.map(post => (
-      <li class="post-item">
-        <h2><a href={`/posts/${post.slug}`}>{post.data.title}</a></h2>
-        <div class="post-item-meta">
+      <li>
+        <a href={`/posts/${post.slug}`}>{post.data.title}</a>
+        {post.data.date && (
           <time datetime={post.data.date.toISOString()}>
-            {post.data.date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+            {post.data.date.toLocaleDateString('zh-CN')}
           </time>
-          <span>{post.data.category}</span>
-        </div>
-        {post.data.description && (
-          <p class="post-item-desc">{post.data.description}</p>
         )}
-        {post.data.tags.length > 0 && (
-          <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-            {post.data.tags.map(tag => (
-              <a href={`/tags/${tag}`} class="tag">{tag}</a>
-            ))}
-          </div>
-        )}
+        {post.data.category && <span>{post.data.category}</span>}
       </li>
     ))}
   </ul>
-</BaseLayout>
+</div>

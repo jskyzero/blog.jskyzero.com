@@ -1,26 +1,87 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('posts')).filter(p => !p.data.draft);
+const docs = await getCollection('docs');
+const posts = docs.filter(d => d.data.date);
 
 const tagMap = new Map<string, number>();
 for (const post of posts) {
-  for (const tag of post.data.tags) {
+  for (const tag of post.data.tags || []) {
     tagMap.set(tag, (tagMap.get(tag) || 0) + 1);
   }
 }
 const tags = [...tagMap.entries()].sort((a, b) => b[1] - a[1]);
 ---
 
-<BaseLayout title="标签">
-  <h1>标签</h1>
-  <p class="page-description">{tags.length} 个标签</p>
-  <div class="tags-cloud">
-    {tags.map(([tag, count]) => (
-      <a href={`/tags/${tag}`} class="tag-cloud-item">
-        {tag}<span class="tag-count">({count})</span>
-      </a>
-    ))}
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>标签 - jskyzero's blog</title>
+  <style>
+    :root {
+      --bg: hsl(0, 20%, 99%);
+      --text: hsl(0, 1%, 39%);
+      --text-strong: hsl(0, 5%, 12%);
+      --text-weak: hsl(0, 1%, 60%);
+      --border: hsl(0, 1%, 85%);
+      --accent-bg: hsl(0, 8%, 97%);
+      --radius: 4px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: hsl(0, 9%, 7%);
+        --text: hsl(0, 4%, 71%);
+        --text-strong: hsl(0, 15%, 94%);
+        --text-weak: hsl(0, 2%, 49%);
+        --border: hsl(0, 4%, 23%);
+        --accent-bg: hsl(0, 6%, 10%);
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      font-size: 14px;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 3rem;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 1rem 1.5rem; }
+    }
+    h1 { font-size: 26px; font-weight: 500; color: var(--text-strong); margin-bottom: 0.5rem; }
+    .desc { color: var(--text-weak); margin-bottom: 1.5rem; }
+    .tags-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag-item {
+      display: inline-flex; align-items: center;
+      background: var(--accent-bg); border: 1px solid var(--border);
+      padding: 4px 12px; border-radius: var(--radius);
+      font-size: 13px; color: var(--text-weak);
+      text-decoration: none; transition: all 0.15s;
+    }
+    .tag-item:hover { color: var(--text-strong); }
+    .tag-count { color: var(--text-weak); font-size: 12px; margin-left: 4px; }
+    .back-link { display: inline-block; margin-top: 2rem; font-size: 13px; color: var(--text-strong); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>标签</h1>
+    <p class="desc">{tags.length} 个标签</p>
+    <div class="tags-cloud">
+      {tags.map(([tag, count]) => (
+        <a href={`/tags/${encodeURIComponent(tag)}`} class="tag-item">
+          {tag}<span class="tag-count">({count})</span>
+        </a>
+      ))}
+    </div>
+    <a href="/" class="back-link">← 返回首页</a>
   </div>
-</BaseLayout>
+</body>
+</html>
