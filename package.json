@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/starlight": "^0.34.3",
+    "@fontsource/ibm-plex-mono": "^5.2.5",
     "astro": "^5.7.13",
     "zod": "^3.25.76"
   }
