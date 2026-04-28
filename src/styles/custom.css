@@ -263,6 +263,11 @@ strong {
   font-weight: 500 !important;
 }
 
+/* Hide heading anchor icon but keep links clickable */
+.sl-anchor-link .sl-anchor-icon {
+  display: none;
+}
+
 /* Q&A styling */
 .qa-item {
   margin-bottom: 0.5rem;
