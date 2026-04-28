@@ -50,7 +50,7 @@ tags: ["Python", "Tools"]
 
 对每一行进行单独处理：
 
-```Python
+```python
 def read(self, file_path):
         """read txt"""
         with open(file_path, "r", encoding="utf-8") as txt_file:
@@ -70,7 +70,7 @@ def read(self, file_path):
 
 这里有一个有意思的工具方法，slice，将字符串进行切分，再对切分后的字符串进行一次切片操作，以此来快速将字符串中的关键信息提取出来。
 
-```Python
+```python
     def __init__(self, line, section):
         self.section = section
         # 2\. [title](src), authur [demo code](demo_src)\
@@ -107,7 +107,7 @@ def read(self, file_path):
 
 这部分就比较简单了，直接map一下然后写入文件就行。
 
-```Python
+```python
     def to_csv(self):
         self.csv = map(lambda x: x.to_csv(), self.articles)
         return self

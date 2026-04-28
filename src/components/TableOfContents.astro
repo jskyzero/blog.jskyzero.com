@@ -1,0 +1,68 @@
+<div class="toc-sidebar">
+  <nav>
+    <h2 id="toc-heading">本页内容</h2>
+    <ul id="toc-list">
+    </ul>
+  </nav>
+</div>
+
+<script>
+  function buildTOC() {
+    const headings = document.querySelectorAll('.post-content h2, .post-content h3');
+    const list = document.getElementById('toc-list');
+    if (!list || headings.length < 2) {
+      const sidebar = document.querySelector('.toc-sidebar');
+      if (sidebar) sidebar.style.display = 'none';
+      return;
+    }
+
+    for (const h of headings) {
+      const li = document.createElement('li');
+      li.style.setProperty('--depth', h.tagName === 'H3' ? '1' : '0');
+
+      const a = document.createElement('a');
+      a.href = `#${h.id || ''}`;
+      a.textContent = h.textContent || '';
+
+      // Ensure headings have IDs
+      if (!h.id) {
+        h.id = h.textContent?.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\u4e00-\u9fff-]/g, '') || '';
+        a.href = `#${h.id}`;
+      }
+
+      li.appendChild(a);
+      list.appendChild(li);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', buildTOC);
+
+  // Highlight active heading on scroll
+  let observer: IntersectionObserver;
+  document.addEventListener('DOMContentLoaded', () => {
+    const headings = document.querySelectorAll('.post-content h2, .post-content h3');
+    if (headings.length < 2) return;
+
+    const links = document.querySelectorAll('#toc-list a');
+    observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            for (const link of links) {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === `#${entry.target.id}`) {
+                link.classList.add('active');
+              }
+            }
+            break;
+          }
+        }
+      },
+      { rootMargin: '-80px 0px -80% 0px' }
+    );
+
+    for (const h of headings) {
+      observer.observe(h);
+    }
+  });
+</script>

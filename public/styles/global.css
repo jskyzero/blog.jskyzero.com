@@ -314,8 +314,22 @@ img {
   font-size: 0.875em;
 }
 
-/* === Code Blocks (Expressive Code style) === */
-pre {
+/* === Code Blocks (Expressive Code handles styling) === */
+.expressive-code {
+  margin: 0.75rem 0 2rem 0 !important;
+  border-radius: 6px;
+}
+
+.expressive-code .frame {
+  box-shadow: none;
+}
+
+.expressive-code figure {
+  background: var(--color-background-weak) !important;
+}
+
+/* Fallback for non-EC code blocks */
+pre:not(.ec-line *) {
   background: var(--color-background-weak);
   border-radius: 6px;
   padding: 1rem 1.25rem;
@@ -324,20 +338,14 @@ pre {
   font-family: var(--font-mono);
   font-size: 13px;
   line-height: 1.7;
-  box-shadow: none;
 }
 
-pre code {
+pre:not(.ec-line *) code {
   background: none;
   color: var(--color-text);
   padding: 0;
   font-family: inherit;
   font-size: inherit;
-}
-
-/* Dark mode code block colors */
-[data-theme='dark'] pre {
-  background: var(--color-background-weak);
 }
 
 /* === Tables === */
