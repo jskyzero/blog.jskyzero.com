@@ -43,14 +43,11 @@ export default defineConfig({
         Footer: './src/components/Footer.astro',
       },
       sidebar: [
-        {
-          label: '博客',
-          items: [
-            { label: '站点介绍', link: '/posts/自我介绍' },
-          ],
-        },
+        { label: '站点介绍', link: '' },
+        { label: '自我介绍', link: '/posts/自我介绍' },
         {
           label: '编程语言',
+          collapsed: true,
           items: [
             { label: 'C++ 模板元編程', link: '/posts/c-模板元編程' },
             { label: 'HTML 编写静态网页工具', link: '/posts/html-编写静态网页工具' },
@@ -62,6 +59,7 @@ export default defineConfig({
         },
         {
           label: '计算机科学',
+          collapsed: true,
           items: [
             { label: '人工智能-搜索算法', link: '/posts/人工智能-搜索算法' },
             { label: '字符编码', link: '/posts/字符编码' },
@@ -71,6 +69,7 @@ export default defineConfig({
         },
         {
           label: '软件工具',
+          collapsed: true,
           items: [
             { label: 'Hexo 搭建个人博客', link: '/posts/hexo-搭建个人博客' },
             { label: 'OpenRefine 数据处理', link: '/posts/openrefine-数据处理' },
@@ -82,6 +81,7 @@ export default defineConfig({
         },
         {
           label: '专题 UNITY',
+          collapsed: true,
           items: [
             { label: 'extend_editor.basic', link: '/posts/extend_editorbasic' },
             { label: 'mvc-in-unity', link: '/posts/mvc-in-unity' },
@@ -91,6 +91,7 @@ export default defineConfig({
         },
         {
           label: '专题 UWP',
+          collapsed: true,
           items: [
             { label: 'async', link: '/posts/async' },
             { label: 'mvvm_light', link: '/posts/mvvm_light' },
