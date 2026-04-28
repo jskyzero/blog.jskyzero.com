@@ -41,10 +41,10 @@ otaku.change(world);      // by jskyzero
 
 ---
 
-## 快速开始
-
-浏览左侧边栏的分类，点击感兴趣的文章即可开始阅读。
+## ClariS
 
 :::note
-博客内容均为个人学习笔记，如有错误欢迎指正。
+最后附上可爱的ClariS的近照~
 :::
+
+![](https://www.clarismusic.jp/images/enter/img_main.png)
