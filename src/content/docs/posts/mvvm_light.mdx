@@ -31,13 +31,16 @@ tags: ["UWP", "C#", "MVVM"]
 
 嗯这个我们懂的，就是提供一个更新提醒的接口。
 ```csharp
+// 通知UI层：名为"Name"的属性已经发生变化，需要刷新绑定了该属性的控件
 RaisePropertyChanged(() => Name);
 ```
 ### ViewModelLocator && SimpleIoc
 
 嗯这个就是所谓的IoC容器了我们可以把ViewModel和Server在里面register，然后以后就可以直接getinstance了
 ```csharp
+// 设置IoC容器的提供者为SimpleIoc，这是整个依赖注入体系的入口
 ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+// 将AppViewModel类型注册到IoC容器中，后续可通过GetInstance获取其实例
 SimpleIoc.Default.Register<AppViewModel>();
 ```
 
@@ -49,10 +52,13 @@ SimpleIoc.Default.Register<AppViewModel>();
 如
 ```xml
 <CheckBox>
+    <!-- 借助Interaction库，将控件的事件转换为Command绑定，实现MVVM模式下的解耦 -->
     <i:Interaction.Triggers>
+        <!-- 监听Checked事件，触发时执行绑定到CheckedCommand的RelayCommand -->
         <i:EventTrigger EventName="Checked">
             <command:EventToCommand Command="{Binding CheckedCommand}"></command:EventToCommand>
         </i:EventTrigger>
+        <!-- 监听Unchecked事件，触发时执行绑定到UnCheckedCommand的RelayCommand -->
         <i:EventTrigger EventName="Unchecked">
             <command:EventToCommand Command="{Binding UnCheckedCommand}"></command:EventToCommand>
         </i:EventTrigger>
@@ -65,11 +71,13 @@ SimpleIoc.Default.Register<AppViewModel>();
 
 嗯这个就是最重要的消息机制的了，总之一个地方注册一个处理方法，然后就可以消息传递了。
 ```csharp
+// 注册一个消息接收者：当收到SendMessageToken标记的string类型消息时，执行Lambda更新Msg
 Messenger.Default.Register<string>(this, MessageToken.SendMessageToken, (msg) =>
         {
             Msg = msg;
         });
 // token 大概只是个确定特定接受方的字符串
+// 发送一条string类型的消息，所有注册了对应Token的接收者都会收到此消息
 Messenger.Default.Send<string>(Msg, MessageToken.SendMessageToken);
 ```
 
@@ -77,8 +85,10 @@ Messenger.Default.Send<string>(Msg, MessageToken.SendMessageToken);
 
 嗯这个就是我们非UI线程与UI线程通信用的了，大概就是在app.cs里面初始化，然后在需要的时候调用接口就好。
 ```csharp
+// 在App启动时初始化DispatcherHelper，使其关联到UI线程的Dispatcher
 DispatcherHelper.Initialize();
 
+// 在非UI线程中调用此方法，将操作调度到UI线程执行，避免跨线程访问UI控件时的异常
 DispatcherHelper.CheckBeginInvokeOnUI(() =>
                   {
                       Teacher.Students.Add(new Student()

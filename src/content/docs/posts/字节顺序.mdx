@@ -23,9 +23,13 @@ tags: ["Computer Science", "Endianness"]
 
 我们一般将最高有效位字节储存在最低的内存地址的叫做大端序，最低位字节储存在最低的内存地址的叫做小端序。举例来说：
 ```
+// 一个4字节int类型数据的十六进制表示，最高位字节是0x01，最低位是0x04
 data = 0x01020304
+     // 内存地址方向：从左到右为低地址到高地址
      低位地址 >> 高位地址
+// 大端序（Big-Endian）：最高有效字节(0x01)保存在最低内存地址，符合人类阅读习惯
 大端序 0x01 | 0x02 | 0x03 | 0x04
+// 小端序（Little-Endian）：最低有效字节(0x04)保存在最低内存地址，x86等CPU使用此方式
 小端序 0x04 | 0x03 | 0x02 | 0x01
 ```
 
@@ -33,19 +37,28 @@ data = 0x01020304
 
 根据字节序的定义，我们只要知道了数据在内存中的保存方式，自然可以很容易的判断它是那种字节序列。这里以C语言描述为例。具体的逻辑可以参考实际代码，如下。
 ```c
-#include <stdio.c> // for printf()
+#include <stdio.c> // 引入printf()函数，用于格式化输出
 
 int main() {
+    // main函数：程序的入口点，本程序的目的是检测当前机器的字节序
     
     // 假定int为4byte
+    // 定义一个int类型变量，其十六进制值为0x01020304，在内存中占用4个字节
     int a = 0x01020304;
     
     // 获取首byte地址，并用（也是一个byte的char类型）的指针存储
+    // 关键步骤：将int指针强制转换为char指针，因为char只占1个字节
+    // 这样b就指向了a在内存中的最低地址字节，可以逐字节读取
     char *b = (char *)&a;
     
     // 依照地址增长，打印每个byte
+    // 循环4次，每次打印当前字节的地址和字符值
+    // 如果是大端序：依次打印0x01, 0x02, 0x03, 0x04
+    // 如果是小端序：依次打印0x04, 0x03, 0x02, 0x01
     for (int i = 0; i < 4; i++) {
+        // %p打印指针地址（内存地址），%c打印该字节对应的字符
         printf("%p:%c\n", b, *b);
+        // 指针向前移动1个字节，指向下一个字节
         b++;
     }
     return 0;
@@ -60,33 +73,46 @@ int main() {
 
 使用Hexdump我们可以以字节为单位很方便的查看文件的原貌，但是请注意关于这个工具的默认查看方式
 ```
+// -x 选项说明：以两字节为一组进行十六进制显示
+// 每行显示偏移量，然后是8组、4列、空格分隔的两字节数据（注意：两字节组内顺序受字节序影响）
  -x      Two-byte hexadecimal display.  Display the input offset in hexa‐
          decimal, followed by eight, space separated, four column, zero-
          filled, two-byte quantities of input data, in hexadecimal, perline.
         
-
+// 中间内容省略
 ...
 
+// 重要提醒：如果不指定任何格式参数，hexdump默认使用 -x 的显示方式
 If no format strings are specified, the default display is equivalent to
  specifying the -x option.
 ```
 举例来说，你现在有一个文件里面写入的是`123`(换个表示方法`0x313233`)，假定你的机器是小端序，使用hexdump不加参数查看，你将看到
 ```
+// 小端序机器上的输出结果：文件内容"123"(0x31 0x32 0x33)被按两字节分组显示
+// 第一组：低地址字节0x32在前、高地址字节0x31在后 -> 显示为"3231"（两字节内部翻转了）
+// 第二组：第三字节0x33与字符串尾部的空字符0x00 -> 显示为"0033"
 0000000 3231 0033
+// 偏移地址，表示文件总长度为0x000003字节处结束
 0000003
 ```
 当然我们直接用hd指令就挺好的
 ```
+// 使用 hd（等于 hexdump -C）的规范显示：每个字节独立显示，附带ASCII字符对照
+// 格式：偏移地址 + 16个字节的十六进制值 + ASCII可视字符（用 | | 包围）
 00000000  31 32 33                                          |123|
+// 数据在偏移地址0x00000003处结束，共3个字节
 00000003
 ```
 毕竟
 ```
+// -C 选项说明：以规范格式显示，包含十六进制与ASCII字符对照（推荐使用）
+// 每行格式：偏移地址 + 最多16个字节的十六进制值（每字节一列） + ASCII表示（| | 包围）
      -C	     Canonical hex+ASCII display.  Display the input offset in hexa-
 	     decimal, followed by sixteen space-separated, two column, hexa-
 	     decimal bytes, followed by	the same sixteen bytes in %_p format
 	     enclosed in ``|'' characters.
 
+// 直接使用 hd 命令等同于 hexdump -C，推荐日常使用
 	     Calling the command hd implies this option.
 
 ```

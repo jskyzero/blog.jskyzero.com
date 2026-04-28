@@ -21,17 +21,21 @@ tags: ["UWP", "C#"]
 
 我们随意给界面上加个东西
 ```xml
+<!-- Grid 是页面布局容器，Background 绑定系统主题色 -->
 <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <!-- TextBlock 用于显示文本，x:Name 给控件命名方便在 C# 代码中引用 -->
     <TextBlock x:Name="output" Text="计算中" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
 </Grid>
 ```
 然后把这个虽然没什么意义但是很耗时间的东西放在页面的初始化里
 ```csharp
+// 同步计算：直接在 UI 线程上执行，循环次数极大（约 21 亿次）
 int ans = 0;
 for (var i = 0; i < Int32.MaxValue; i++)
 {
-    ans++;
+    ans++;  // 累加操作本身很快，但循环次数太多导致 UI 长时间卡死
 }
+// 只有在整个循环结束后，UI 才会更新，期间用户无法进行任何操作
 output.Text = ans.ToString();
 ```
 这样页面是需要很长时间才能加载完成的，我们是看不到“计算中”这样的输出的，这个例子还好，计算的时间可能会停留在加载界面，但是如果是界面上还有其他按钮，此时UI线程阻塞了，我们对其他按钮的事件的触发就会没有反馈。这自然不是我们想要的结果。
@@ -39,15 +43,18 @@ output.Text = ans.ToString();
 ## 初步的尝试
 那上面都说了有异步，那我把这个计算的环节写成异步函数不就好了吗？
 ```csharp
+// async void 表示异步方法，调用后立即返回，不阻塞调用方
 async void CalAns()
 {
-
+    // ⚠ 注意：async 方法在没有 await 时默认在调用线程上执行，不会自动开新线程
     int ans = 0;
+    // 以下循环仍然运行在 UI 线程上，所以界面会继续卡死
     for (var i = 0; i < Int32.MaxValue; i++)
     {
         ans++;
     }
 
+    // 就算这里能成功更新 UI，前面的循环也已经把界面卡住了
     output.Text = ans.ToString();
 }
 ```
@@ -58,14 +65,18 @@ async void CalAns()
 ```csharp
 async void CalAns()
 {
-
+    // 计算仍然在 UI 线程上执行，所以循环阶段界面依然卡顿
     int ans = 0;
     for (var i = 0; i < Int32.MaxValue; i++)
     {
         ans++;
     }
 
+    // Dispatcher.RunAsync 将 lambda 投递到 UI 线程的消息队列中执行
+    // 这里是安全的，因为 Dispatcher 确保了代码在 UI 线程上运行
+    // CoreDispatcherPriority.Normal 指定任务的优先级，Normal 为普通优先级
     await this.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => {
+        // 此时已经在 UI 线程上下文中，可以安全地更新界面控件
         output.Text = ans.ToString();
     });
 }
@@ -77,16 +88,22 @@ async void CalAns()
 ```csharp
 async void CalAnsAsync()
 {
+    // 定义一个返回 int 的委托，封装耗时的计算逻辑
+    // Func<int> 是无参数、返回 int 的委托类型
     Func<int> CalAnsFunc = () =>
     {
         int ans = 0;
+        // 这段循环将在后台线程池线程上执行，不会卡住 UI
         for (var i = 0; i < Int32.MaxValue; i++)
         {
             ans++;
         }
-        return ans;
+        return ans;  // 将计算结果返回
     };
 
+    // Task.Run 将委托投递到线程池中执行，返回 Task<int>
+    // await 等待后台任务完成后取出结果，同时自动切换回调用线程（UI 线程）
+    // 因此这里可以直接更新 output.Text，无需 Dispatcher
     output.Text = (await Task.Run(CalAnsFunc)).ToString();
 }
 ```

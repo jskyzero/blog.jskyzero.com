@@ -28,3 +28,10 @@ otaku.change(world);      // by jskyzero
 + 2018/11/11 Update：更新到了原來某個簡介美觀的主題
 + 2018/10/13 Update：將頁面黑白化
 + 2018/07/04 Update：本博客定位变成 Notes / Program / Books & Items
+
+
+## ClariS
+
+最后附上可爱的ClariS的近照~
+
+![](https://www.clarismusic.jp/images/enter/img_main.png)
