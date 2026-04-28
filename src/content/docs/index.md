@@ -1,9 +1,6 @@
 ---
 title: "jskyzero's blog"
 description: 用来分享编程与计算机科学相关的内容。
-template: splash
-hero:
-  tagline: 用来分享编程与计算机科学相关的内容。
 ---
 
 欢迎来到 jskyzero 的个人博客。本博客用来分享编程与计算机科学相关的内容。
