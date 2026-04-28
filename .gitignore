@@ -1,7 +1,8 @@
 # Dependencies
 node_modules/
 
-# Astro build output
+# Astro generated
+.astro/
 dist/
 
 # Legacy build outputs

@@ -254,6 +254,29 @@ strong {
   font-weight: 500 !important;
 }
 
+/* Q&A styling */
+.qa-item {
+  margin-bottom: 0.5rem;
+  padding: 0.375rem 0;
+  border-bottom: 1px solid var(--color-border-weak);
+}
+.qa-item:last-child {
+  border-bottom: none;
+}
+.question {
+  color: hsl(30, 60%, 52%);
+  font-weight: 500 !important;
+}
+.answer {
+  color: var(--color-text);
+}
+
+@media (prefers-color-scheme: dark) {
+  .question {
+    color: hsl(30, 80%, 65%);
+  }
+}
+
 ul, ol {
   list-style: none !important;
   padding: 0 !important;
