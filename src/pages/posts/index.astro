@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts'))
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title="全部文章">
+  <h1 style="font-size: var(--sl-text-3xl); margin-bottom: 1.5rem; font-weight: 700;">全部文章</h1>
+  <ul class="posts-list">
+    {posts.map(post => (
+      <li class="post-item">
+        <h2><a href={`/posts/${post.slug}`}>{post.data.title}</a></h2>
+        <div class="post-item-meta">
+          <time datetime={post.data.date.toISOString()}>
+            {post.data.date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          <span>{post.data.category}</span>
+        </div>
+        {post.data.description && (
+          <p class="post-item-desc">{post.data.description}</p>
+        )}
+        {post.data.tags.length > 0 && (
+          <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            {post.data.tags.map(tag => (
+              <a href={`/tags/${tag}`} class="tag">{tag}</a>
+            ))}
+          </div>
+        )}
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

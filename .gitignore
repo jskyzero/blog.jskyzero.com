@@ -1,3 +1,13 @@
+# Dependencies
+node_modules/
+
+# Astro build output
+dist/
+
+# Legacy build outputs
 _book
 _site
-node_modules
+
+# Environment
+.env
+.env.*

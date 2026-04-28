@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const tagSet = new Set<string>();
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      tagSet.add(tag);
+    }
+  }
+  return [...tagSet].map(tag => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+const posts = (await getCollection('posts'))
+  .filter(p => !p.data.draft && p.data.tags.includes(tag))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title={`标签: ${tag}`}>
+  <h1 style="font-size: var(--sl-text-3xl); margin-bottom: 0.5rem; font-weight: 700;">标签: {tag}</h1>
+  <p style="color: var(--sl-color-text-muted); margin-bottom: 1.5rem;">{posts.length} 篇文章</p>
+  <ul class="posts-list">
+    {posts.map(post => (
+      <li class="post-item">
+        <h2><a href={`/posts/${post.slug}`}>{post.data.title}</a></h2>
+        <div class="post-item-meta">
+          <time datetime={post.data.date.toISOString()}>
+            {post.data.date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          <span>{post.data.category}</span>
+        </div>
+        {post.data.description && (
+          <p class="post-item-desc">{post.data.description}</p>
+        )}
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
