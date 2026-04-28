@@ -1,6 +1,7 @@
 ---
 import Default from '@astrojs/starlight/components/Header.astro';
 import SiteTitle from '@astrojs/starlight/components/SiteTitle.astro';
+import Search from '@astrojs/starlight/components/Search.astro';
 import { Icon } from '@astrojs/starlight/components';
 import config from 'virtual:starlight/user-config';
 
@@ -13,9 +14,9 @@ const links = config.social || [];
     <SiteTitle {...route} />
   </div>
   <div class="middle-group sl-flex">
-    <a class="links" href="/posts">文章</a>
   </div>
   <div class="sl-hidden md:sl-flex right-group">
+    <Search />
     {links.length > 0 && (
       <div class="sl-flex social-icons">
         {links.map(({ href, icon }) => (
@@ -47,20 +48,6 @@ const links = config.social || [];
     gap: var(--sl-nav-gap);
   }
 
-  @media (max-width: 50rem) {
-    :global(:root[data-has-sidebar]) {
-      .middle-group {
-        display: none;
-      }
-    }
-  }
-
-  @media (min-width: 50rem) {
-    .middle-group {
-      display: flex;
-    }
-  }
-
   .right-group,
   .social-icons {
     gap: 1rem;
@@ -78,20 +65,6 @@ const links = config.social || [];
 
   .social-icons a svg:hover {
     color: var(--color-text-strong);
-  }
-
-  .links {
-    text-transform: none;
-    font-size: 16px;
-    color: var(--color-icon);
-    line-height: normal;
-    text-decoration: none;
-  }
-
-  .links:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-thickness: 1px;
   }
 
   @media (min-width: 50rem) {
