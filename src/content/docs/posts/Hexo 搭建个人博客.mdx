@@ -5,6 +5,7 @@ category: "软件工具"
 image: "/images/posts/new_year.jpg"
 tags: ["Tutorial", "Hexo"]
 ---
+{/* 文章维护说明：历史 Hexo 建站教程，命令示例保留用于迁移参考。 */}
 这篇博文将总结这个博客是怎样构建的，认真看完以后当然可以建立出和目前您看到的博客类似或者更好的站点，本文将假定您有一定的编程基础，如果您是初次接触编程，可能需要认真阅读文中给出的参考资料。
 
 # Hexo 搭建个人博客
@@ -33,6 +34,7 @@ tags: ["Tutorial", "Hexo"]
 在完成了前置工作以后就可以用如下指令安装hexo
 
 ```shell
+# -g 表示全局安装 hexo 命令；如果不想污染全局环境，也可以使用 npx hexo。
 npm install -g hexo-cli
 ```
 
@@ -41,8 +43,11 @@ npm install -g hexo-cli
 安装完hexo以后我们可以先从一个简单的示例（HelloWorld）入手，接触任何一个复杂的新技术时最好都从一个简单的例子开始，逐步理解，明白这个技术所解决的问题，以及背后的大概的工作原理，这样可能对掌握如何更好的使用这门技术有帮助，毕竟写程序很大程度上来讲都是一个举一反三的过程。
 
 ```shell
+# 在指定目录生成 Hexo 项目骨架。
 hexo init <floder>
+# 进入项目目录；这里的 floder 是原文拼写，实际命令中替换成你的目录名即可。
 cd <floder>
+# 安装 package.json 中声明的依赖。
 npm install
 ```
 这样就初始化了一个简单的示例，您可以在hexo的文档中看到更多关于这个示例的信息，比如文件结构和一些配置信息，这对接下来要做的事情很有帮助，有些时候偷懒总是要付出代价的，所以还是浏览一遍hexo的文档明白一个大概比较好，这样能保证您接下来能够进行的更加顺利。
@@ -50,6 +55,7 @@ npm install
 使用如下指令可以将该博客挂在localhost:4000上，打开浏览器输入对应ip:port就可以预览博客的效果。
 
 ```shell
+# 启动本地开发服务器，默认监听 http://localhost:4000。
 hexo server
 ```
 
@@ -67,6 +73,7 @@ hexo server
 # 安装到根目录下的 node_modules 里面
 npm install hexo-material
 # 将其挪到 themes 目录下
+# 注意保留主题目录名，后续 _config.yml 中的 theme 要与目录名一致。
 mv node_modules/hexo-material  themes/
 ```
 

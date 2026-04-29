@@ -6,6 +6,8 @@ image: "/images/posts/mvc.png"
 tags: ["Unity", "MVC"]
 ---
 
+{/* 文章维护说明：Unity MVC 架构笔记，图片和代码说明应围绕职责划分。 */}
+
 本文我們簡單聊一下，游戲開發中的MVC架構。
 
 # 遊戲中的MVC架構
@@ -86,7 +88,12 @@ Model層依然存儲數據，不過這裏的數據就是獨立於游戲物體的
 + Exception, etc.
     + Exception，外圍異常類，放置需要額外操作。
 
+```text
+Command -> Caller -> Core -> Controller -> Model/View
+```
+
+上面的调用链可以理解为：输入事件或业务意图先被包装成 `Command`，`Caller` 负责把命令交给核心调度器，`Core` 再根据命令类型找到对应 `Controller`。这样做的好处是 View 不需要知道所有业务细节，Controller 也不需要直接依赖具体输入来源。
+
 ### 語法細節
 
 建議直接閱讀源碼和MSDN相關參考，這裡不展開來說了。
-

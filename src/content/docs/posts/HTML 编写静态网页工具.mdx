@@ -5,6 +5,8 @@ category: "编程语言"
 tags: ["HTML", "JavaScript", "Tools"]
 ---
 
+{/* 文章维护说明：静态 HTML 工具开发笔记，示例代码演示 UI 与浏览器端逻辑的拆分。 */}
+
 使用HTML/JavaScript的方式编写一些辅助小工具。
 
 # 效率提升：使用HTML编写小工具
@@ -31,15 +33,16 @@ tags: ["HTML", "JavaScript", "Tools"]
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- 明确声明 UTF-8，否则中文输入、中文按钮文案可能乱码。 -->
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 </head>
 
 <body>
   <div>
-    {/* 这里写UI */}
+    <!-- 这里写 UI，通常放输入框、按钮和结果区域。 -->
   </div>
   <script>
-    {/* 这里写逻辑 */}
+    // 这里写浏览器端逻辑，例如读取输入、计算结果并更新 DOM。
   </script>
 </body>
 ```
@@ -50,13 +53,17 @@ tags: ["HTML", "JavaScript", "Tools"]
     <p class="text-center">技能概率计算</p>
     <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">概率:</span>
+      <!-- 使用分号分隔权重，后续 JS 会 split(';') 并转为数字。 -->
       <input id="key" type="text" class="form-control" value="1000;1000;1000">
+      <!-- 点击按钮触发计算逻辑，不需要后端服务。 -->
       <button id="button" class="btn btn-outline-secondary" type="button">计算</button>
     </div>
     <div class="input-group mb-3">
       <span class="input-group-text" id="basic-addon1">描述:</span>
+      <!-- 描述用空格分隔，按下标和概率数组一一对应。 -->
       <input id="description" type="text" class="form-control" value="平A 技能A 技能B 防御 绝技">
     </div>
+    <!-- pre 保留制表符和换行，适合展示简单表格。 -->
     <pre id="result" class="px-2 text-center"></pre>
   </div>
 ```
@@ -80,24 +87,32 @@ tags: ["HTML", "JavaScript", "Tools"]
 一个逻辑的例子
 ```javascript
 document.getElementById("button").onclick = () => {
+      // 读取权重输入，例如 "1000;1000;1000"。
       let text = document.getElementById("key").value;
+      // 描述按空格切分，数量不足时后面会用 "空" 兜底。
       let descriptions = document.getElementById("description").value.split(" ");
 
       let result = document.getElementById("result");
+      // 将分号分隔的字符串转为整数数组，并过滤掉解析失败的项。
       let values = text.split(";").map(a => parseInt(a)).filter(a => Number.isInteger(a));
+      // 总权重用于计算每个选项的相对概率。
       let total = values.reduce((a, b) => a + b, 0);
+      // 概率数组与 values 下标一致，例如 1000/3000 = 0.333...
       let valuesProbability = values.map(a => a / total);
 
       let valuesZip = values.map((e, i) => {
         // return [e, valuesProbability[i]];
+        // 这里输出整数百分比，适合给策划或配置表快速核对。
         return e + "\t\t" + Math.floor(valuesProbability[i] * 100) + "%\t";
       });
 
       valuesZip = valuesZip.map((e, i) => {
+        // 描述数量少于权重数量时，补一个默认标签，避免输出 undefined。
         let label = descriptions[i] === undefined ? "空" : descriptions[i];
         return label + "\t\t" + e;
       })
 
+      // 使用 innerText 而不是 innerHTML，避免把用户输入当作 HTML 执行。
       result.innerText = valuesZip.join("\n");
     }
 ```

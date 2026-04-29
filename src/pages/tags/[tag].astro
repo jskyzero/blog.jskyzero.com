@@ -16,7 +16,8 @@ const { tag } = Astro.params;
 const decodedTag = decodeURIComponent(tag || '');
 const docs = await getCollection('docs');
 const posts = docs
-  .filter(d => d.data.date && (d.data.tags || []).some((t: string) => encodeURIComponent(t) === tag))
+  // Compare decoded tag names directly; params are encoded only for URLs.
+  .filter(d => d.data.date && (d.data.tags || []).includes(decodedTag))
   .sort((a, b) => (b.data.date?.getTime() || 0) - (a.data.date?.getTime() || 0));
 ---
 

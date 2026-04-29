@@ -5,6 +5,8 @@ category: "编程语言"
 tags: ["Python", "Tools"]
 ---
 
+{/* 文章维护说明：生产配置数据生成脚本笔记，代码块注释应突出输入、筛选和输出流程。 */}
+
 唔，首先说一下这是在生产环境，生产环境自然是和自己写着玩的环境是不一样的处理方法，生产环境中我们想要的大概是正确、稳定、高效。
 
 # Python 配置数据表
@@ -29,12 +31,12 @@ tags: ["Python", "Tools"]
 + 引入包，常量定义（字符常量已经删除，反正是无意义的字符序列）
 
 ```python
-import xlrd # for excel read
-import csv # for writerows
-import itertools # for chain
+import xlrd       # 读取 Excel 工作簿；这里只读不写，避免修改原始配置表。
+import csv        # 将枚举结果输出为 CSV，方便复制回配置表或做二次处理。
+import itertools  # combinations/product 用于生成角色组合与笛卡尔积。
 
-ROLE_NUM = 10
-# static string
+ROLE_NUM = 10  # 每组角色数量，用于按角色编号分组切片。
+# static string：生产路径和表名被删去，实际使用时需要替换为真实配置。
 EXCEL_PATH = 
 OUTPUT_PATH = 
 PveRobotConf_Name = 
@@ -50,16 +52,19 @@ xlrd的方式是先获得book，然后book打开sheet，sheet再获取行、列�
 
 ```python
 def read_data():
-  # read data
+  # 打开 Excel 文件；xlrd 只负责读取，因此不会意外覆盖源配置。
   book = xlrd.open_workbook(EXCEL_PATH);
+  # PveRobotConf 在这段示例中没有继续使用，保留是为了说明还有关卡配置表。
   PveRobotConf = book.sheet_by_name(PveRobotConf_Name)
   PveRobotAttrs = book.sheet_by_name(PveRobotAttrs_Name)
 
   sh = PveRobotAttrs
+  # 第一行是字段名，通过字段名定位列比写死列号更适合配置表迭代。
   titles = sh.row_values(0)
   # print("numbers of worksheets: {0}".format(book.nsheets))
   # print("worksheet names: {0}".format(book.sheet_names()))
   # print("{0} {1} {2}".format(sh.name, sh.nrows, sh.ncols))
+  # 从第 5 行开始读取，跳过表头和说明行；两列分别是角色 ID 与职业类型。
   data = [sh.col_values(titles.index(PveRobotAttrs_ID_Name),4),
           sh.col_values(titles.index(PveRobotAttrs_JOB_Name),4)]
   return data
@@ -71,19 +76,18 @@ def read_data():
 
 ```python
 def process_each_level(begin, end, data, result, level):
-  # python list process
-  # transpose
+  # 输入 data 形如 [[id...], [job...]]，先转置为 [[id, job], ...]。
   data = map(list, zip(*data))
-  # map to int
+  # Excel 读出的数字可能是浮点或字符串，统一转成 int 便于比较和输出。
   data = map(lambda l : map(int, l), data)
-  # get each role between begin and end
+  # 按 ROLE_NUM 分组，并只取 [begin, end) 范围内的角色槽位。
   data = map(lambda x : data[x::ROLE_NUM], range(begin, end))
-  # transpose make each sub role together
+  # 再次转置，把同一关卡可选的角色放到一起，便于组合枚举。
   data = map(list, zip(*data))
-  # join together
+  # 如果只需要扁平列表，可以用 chain 展开；这里保留分组以便 combinations 使用。
   # data = itertools.chain(*data)
 
-  # eight role select 4
+  # 从候选角色组中选择 4 组，再在每组内部做笛卡尔积生成具体角色配置。
   for each_select in itertools.combinations(data, 4):
     process_each_select(each_select, result, level)
   return result
@@ -91,11 +95,14 @@ def process_each_level(begin, end, data, result, level):
 
 
 def process_each_select(each_select, result, level):
+  # product(*each_select) 会枚举每组候选中的所有组合。
   for each_result in itertools.product(*each_select):
+    # each_result 的元素形如 [id, role]，分离 ID 和职业用于输出与校验。
     ids = map(lambda l: l[0], each_result)
     roles = map(lambda l: l[1], each_result)
-    # check role
+    # 职业不能重复；set 去重后长度不变，说明四个角色职业互不相同。
     if (len(set(roles)) == len(roles)):
+      # 输出格式：[自增ID, 关卡ID, 预留字段, 角色ID...]
       each_result = list(itertools.chain(*[[len(result) + 1], [level], [""], ids]))
       result.append(each_result)
 ```
@@ -109,16 +116,19 @@ def process_all():
   result = []
   data = read_data()
 
+  # config 的每一项表示：[关卡ID, [角色槽位起点, 角色槽位终点)]。
+  # 通过改这里，可以一次性为多个关卡批量生成配置。
   config = [
       [10000, [0,2]],]
   for line in config:
+    # line[1] 控制槽位范围，line[0] 写入结果中的关卡 ID。
     process_each_level(line[1][0],line[1][1], data, result, line[0]);
   return result
 
 
 if __name__ == "__main__":
   result = process_all()
-  # save to csv file
+  # Python 2 时代 csv 常用二进制模式；Python 3 可改为 open(..., 'w', newline='')。
   with open(OUTPUT_PATH, 'wb') as f:
     csv.writer(f).writerows(result)
 ```

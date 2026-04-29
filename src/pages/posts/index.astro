@@ -1,10 +1,6 @@
 ---
-import { getCollection } from 'astro:content';
-
-const docs = await getCollection('docs');
-const posts = docs
-  .filter(d => d.data.date)
-  .sort((a, b) => (b.data.date?.getTime() || 0) - (a.data.date?.getTime() || 0));
+// Starlight already renders the curated article entry at `/`, so this legacy
+// archive route redirects there to avoid maintaining duplicate navigation UI.
 ---
 
 <!doctype html>
@@ -17,21 +13,3 @@ const posts = docs
 </head>
 <body></body>
 </html>
-
-<div hidden>
-  <h1>全部文章</h1>
-  <p>{posts.length} 篇文章</p>
-  <ul>
-    {posts.map(post => (
-      <li>
-        <a href={`/posts/${post.slug}`}>{post.data.title}</a>
-        {post.data.date && (
-          <time datetime={post.data.date.toISOString()}>
-            {post.data.date.toLocaleDateString('zh-CN')}
-          </time>
-        )}
-        {post.data.category && <span>{post.data.category}</span>}
-      </li>
-    ))}
-  </ul>
-</div>

@@ -6,6 +6,8 @@ image: "/images/posts/cpp.tmp.png"
 tags: ["C++", "Template MetaProgramming", "Summary"]
 ---
 
+{/* 文章维护说明：C++ 模板元编程课程总结，代码块用于解释类型计算和编译期推导。 */}
+
 本文將給出一些C++模板以及模板元的寫法的基本介紹，將會結合具體的例子并竟可能的降低閱讀門檻。
 
 # C++ 模板元編程
@@ -33,12 +35,13 @@ struct Property {
   typedef MemberType ParentType::*MemberPtrType;
   // use pointer to change data
   // 储存实际指向的成员指针
-  MemberPtrType p;
+  MemberPtrType p = nullptr; // 默认置空，实际使用前必须 Bind，否则解引用成员指针没有意义。
   // bind pointer
   // 绑定到指定的成员
   void Bind(MemberPtrType p_) { p = p_; }
   // change data
   // 通过成员指针设置对象的值：parent.*p = value
+  // parent.*p 是成员指针语法：先选定对象 parent，再通过 p 指向的成员写入 value。
   void Set(ParentType& parent, const MemberType& value) { parent.*p = value; }
 };
 
@@ -70,6 +73,7 @@ struct GetMemTypeFromMemPtr {
 // 特化：当模板参数为 Type ParentType::* 形式时，提取出成员类型 Type
 template <typename ParentType, typename Type>
 struct GetMemTypeFromMemPtr<Type ParentType::*> {
+  // Result 是一个类型别名，不是值；使用时需要 typename ...::Result。
   typedef Type Result;
 };
 
@@ -82,6 +86,7 @@ struct GetClassTypeFromMemPtr {
 // 特化：当模板参数为 Type ParentType::* 形式时，提取出父类类型 ParentType
 template <typename ParentType, typename Type>
 struct GetClassTypeFromMemPtr<Type ParentType::*> {
+  // 通过偏特化匹配 Type ParentType::*，让编译器帮我们拆出 ParentType。
   typedef ParentType Result;
 };
 
@@ -114,6 +119,7 @@ void TypeTraits_TEST() {
 // 编译期计算阶乘：递归模板，Factorial<N>::result = N * Factorial<N-1>::result
 template<int N>
 struct Factorial {
+  // 每个 N 都会实例化一个不同的 Factorial<N> 类型。
   static const int result = N * Factorial<N - 1>::result;
 };
 
@@ -169,6 +175,7 @@ struct Abs {
 // 编译期最大公约数（GCD）：使用欧几里得算法递归计算
 template <TYPE x, TYPE y>
 struct GCD {
+  // 欧几里得算法：gcd(x, y) = gcd(y, x % y)。
   static const TYPE result = GCD<y, x % y>::result;
 };
 
@@ -181,6 +188,7 @@ struct GCD<x, 0> {
 // 编译期分数：自动约分并统一符号到分子
 template <TYPE x_, TYPE y_>
 struct Fraction {
+  // 注意：这里没有处理 y_ == 0，真实库需要在编译期 static_assert 防止除零。
   // 计算分子分母绝对值的最大公约数，用于约分
   static const TYPE gcd = GCD<Abs<x_>::result, Abs<y_>::result>::result;
   //   输入符号        输出符号
@@ -203,6 +211,7 @@ struct Fraction {
 // 分数加法：a/b + c/d = (a*d + c*b) / (b*d)
 template <typename f1, typename f2>
 struct Addition {
+  // result 仍然是类型，不是运行时对象；Fraction 会继续做约分。
   typedef Fraction<f1::x * f2::y + f1::y * f2::x, f1::y * f2::y> result;
 };
 
@@ -233,11 +242,13 @@ typedef int TYPE;
 // 将数值包装为类型：使得数值可以作为模板参数在类型系统中传递
 template <TYPE x>
 struct Type {
+  // 把值挂到类型上，后续所有计算都可以在编译期通过 Type<3>::value 访问。
   static const TYPE value = x;
 };
 
 // 空列表标记：NIL 的 Head 和 Tail 都指向自身，表示列表的终点
 struct NIL {
+  // 让 NIL 自身也具备 Head/Tail，某些模板递归中可以减少额外分支。
   typedef NIL Head;
   typedef NIL Tail;
 };
@@ -257,6 +268,7 @@ struct List {
 // 计算列表长度：递归展开 Tail，每层 +1
 template <typename list>
 struct Length {
+  // typename 告诉编译器 list::Tail 是一个类型，而不是静态成员变量。
   static const size_t result = 1 + Length<typename list::Tail>::result;
 };
 
@@ -292,6 +304,7 @@ struct CreateList {
   // 内层模板：将可变参数逐个包装为 List 节点（递归处理）
   template <typename head, typename... tail>
   struct __CreateList {
+    // 每次取出一个 head 放到链表头，tail... 递归构造剩余链表。
     typedef List<head, typename __CreateList<tail...>::result> result;
   };
 
@@ -319,6 +332,7 @@ struct Slice {
   // 通用递归步骤：从列表尾部逐个移除元素，直到列表长度等于 end
   template <typename __list, typename __begin, typename __end>
   struct __Slice {
+    // 先从尾部删到 end 位置，相当于去掉切片右侧多余元素。
     typedef typename __Slice<
         typename RemoveItemAt<__list, Length<__list>::result - 1>::result,
         __begin, __end>::result result;
@@ -327,6 +341,7 @@ struct Slice {
   // 当列表长度等于 end 时：开始从头部逐个移除元素，直到 begin 归零
   template <typename __list, typename __begin>
   struct __Slice<__list, __begin, Type<(Length<__list>::result)>> {
+    // 再从头部删 begin 次，相当于去掉切片左侧多余元素。
     typedef typename __Slice<typename __list::Tail, Type<__begin::value - 1>,
                              Type<(Length<__list>::result - 1)>>::result result;
   };
@@ -338,6 +353,7 @@ struct Slice {
   };
 
   // 入口：对 begin/end 做越界保护，然后启动内层递归切片
+  // size_t 是无符号类型，begin >= 0 恒为真；这里保留原意，实际可简化。
   typedef typename __Slice<
       list, Type<begin >= 0 ? begin : 0>,
       Type<end <= Length<list>::result ? end : Length<list>::result>>::result

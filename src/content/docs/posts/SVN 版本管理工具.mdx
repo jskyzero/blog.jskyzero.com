@@ -6,6 +6,8 @@ image: "/images/site/bg2.jpg"
 tags: ["Tutorial", "SVN"]
 ---
 
+{/* 文章维护说明：SVN 工具教程，命令示例保留为集中式版本管理参考。 */}
+
 本文将带你快速上手SVN，我们希望您有基本的学习能力，最好有过一些编程经验。
 
 # SVN 版本管理工具
@@ -40,6 +42,7 @@ tags: ["Tutorial", "SVN"]
 # 新建文件夹
 mkdir hello
 # 初始化
+# svnadmin create 会在 hello 目录中创建一个仓库，而不是工作副本。
 svnadmin.exe create hello
 ```
 
@@ -54,6 +57,7 @@ mkdir 2
 # 提取文件副本到目录1
 # 关于 file:///D:\SVN\hello
 # 这个就是那啥我们上面说的以文件夹的形式引用仓库
+# 原文命令中的 chekcout 应为 checkout；这里保留原命令作为历史记录。
 svn chekcout file:///D:\SVN\hello 1
 # 提取文件副本到目录2
 svn chekcout file:///D:\SVN\hello 2
@@ -65,6 +69,7 @@ mkdir tags
 # 查看当前状态
 svn status
 # 添加文件夹
+# svn add 只是加入版本控制，真正写入仓库需要 svn commit。
 svn add *
 # 再次查看当前状态
 svn status
@@ -95,6 +100,7 @@ svn add hello.txt
 svn commit -m "this will fail"
 
 # 解决冲突
+# update 会拉取远端改动并在本地标记冲突文件，随后需要手工选择保留哪一边。
 svn update
 # ...
 # 具体的解决方法有很多，命令行交互中也提供基本的MENU里面很多选项，这里不再废话

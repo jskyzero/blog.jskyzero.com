@@ -6,6 +6,8 @@ image: "/images/posts/uwp.jpg"
 tags: ["UWP", "C#"]
 ---
 
+{/* 文章维护说明：记录 UWP 多线程问题及解决方式，示例代码以 C#/XAML 为主。 */}
+
 本文将讲述UWP应用中多线程的具体问题，将结合具体界面阻塞/后台线程访问UI线程问题同时给出具体解决方案。
 
 # UWP内的多线程
@@ -47,6 +49,7 @@ output.Text = ans.ToString();
 async void CalAns()
 {
     // ⚠ 注意：async 方法在没有 await 时默认在调用线程上执行，不会自动开新线程
+    // async 只改变方法的可等待形态，不等于“自动并行”。
     int ans = 0;
     // 以下循环仍然运行在 UI 线程上，所以界面会继续卡死
     for (var i = 0; i < Int32.MaxValue; i++)
@@ -66,6 +69,7 @@ async void CalAns()
 async void CalAns()
 {
     // 计算仍然在 UI 线程上执行，所以循环阶段界面依然卡顿
+    // 这个示例只解决“跨线程更新 UI”的问题，不解决“耗时计算阻塞 UI”的问题。
     int ans = 0;
     for (var i = 0; i < Int32.MaxValue; i++)
     {
@@ -92,6 +96,7 @@ async void CalAnsAsync()
     // Func<int> 是无参数、返回 int 的委托类型
     Func<int> CalAnsFunc = () =>
     {
+        // 这里没有访问 UI 控件，因此可以安全放在线程池执行。
         int ans = 0;
         // 这段循环将在后台线程池线程上执行，不会卡住 UI
         for (var i = 0; i < Int32.MaxValue; i++)
@@ -104,6 +109,7 @@ async void CalAnsAsync()
     // Task.Run 将委托投递到线程池中执行，返回 Task<int>
     // await 等待后台任务完成后取出结果，同时自动切换回调用线程（UI 线程）
     // 因此这里可以直接更新 output.Text，无需 Dispatcher
+    // 如果调用时不在 UI 同步上下文中，await 后续是否回到 UI 线程取决于当前 SynchronizationContext。
     output.Text = (await Task.Run(CalAnsFunc)).ToString();
 }
 ```

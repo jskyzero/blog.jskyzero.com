@@ -5,6 +5,8 @@ category: "编程语言"
 tags: ["Python", "Tools"]
 ---
 
+{/* 文章维护说明：Python 数据转换工具笔记，示例代码用于说明输入清洗与 CSV 输出。 */}
+
 最近遇到的数据处理问题，做个记录，以后可以在此基础上修改为其他文本处理程序！
 
 
@@ -52,15 +54,19 @@ tags: ["Python", "Tools"]
 
 ```python
 def read(self, file_path):
-        """read txt"""
+        """Read source text and convert valid article lines into Article objects."""
+        # 明确指定 utf-8，避免中文标题或作者名在不同系统默认编码下解析失败。
         with open(file_path, "r", encoding="utf-8") as txt_file:
             for line in txt_file:
+                # Section 行切换当前分类，后续文章都会挂到这个 section 下。
                 if line.startswith("Section"):
                     self.current_section = line.split(':')[1].strip()
                     # print(self.current_section)
+                # 以 - 开头的行和空行只是 Markdown 表格/列表结构，不生成数据。
                 elif line.startswith("-") or line == "\n":
                     pass
                 else:
+                    # 其他行默认是文章条目，交给 Article 负责解析字段。
                     article = Article(line, self.current_section)
                     self.articles.append(article)
         return self
@@ -72,34 +78,44 @@ def read(self, file_path):
 
 ```python
     def __init__(self, line, section):
+        # section 由外层读取器维护，表示当前文章所属章节。
         self.section = section
         # 2\. [title](src), authur [demo code](demo_src)\
+        # 先按第一个 '.' 切出序号，并把剩余字符串继续交给后续步骤。
         self.index, line = self.slice(line, '.', None, -1, 1, None)
         # [title](src), authur [demo code](demo_src)\
+        # title 位于 '[' 和 ']' 之间，因此右侧字符串跳过 ']' 后继续处理。
         self.title, line = self.slice(line, ']', 1, None, 1, None)
         # (src), authur [demo code](demo_src)\
+        # src 位于 '(' 和 ')' 之间，c=2 用于跳过后面的 '),'
         self.src, line = self.slice(line, ')', 1, None, 2, None)
         if "demo" in line:
             # authur [demo code](demo_src)\
+            # demo 链接存在时，作者名在 '[' 之前。
             self.authur, line = self.slice(line, '[', None, None, None, None)
             # [demo code](demo_src)\
+            # 再跳到 demo 链接的 '(' 之后，准备提取 demo_src。
             _, line = self.slice(line, '(', None, None, None, None)
             # (demo_src)\
             self.demo_src, _ = self.slice(line, ')', 1, None, None, None)
         else:
             # authur\
+            # 没有 demo 链接时，剩余内容就是作者字段。
             self.authur = line
             self.demo_src = ""
         # authur\
         if self.authur.endswith("\\"):
+            # 原始 Markdown 行尾可能带有转义换行，导出 CSV 前移除。
             self.authur = self.authur[:-1]
         # print(str(self))
 
     @staticmethod
     def slice(str, chr, a=None, b=None, c=None, d=None):
+        # find() 找到分隔符位置；左侧作为当前字段，右侧作为待处理内容。
         index = str.find(chr)
         left = str[0:index].strip()
         right = str[index:].strip()
+        # a/b/c/d 允许调用方按字段格式裁掉括号、逗号、空格等包裹字符。
         return (left[a:b].strip(), right[c:d].strip())
 ```
 
@@ -109,13 +125,16 @@ def read(self, file_path):
 
 ```python
     def to_csv(self):
+        # 延迟把 Article 转为行数据，write() 时再由 csv.writer 消费。
         self.csv = map(lambda x: x.to_csv(), self.articles)
         return self
 
     def write(self, file_path):
+        # newline="" 在 Windows 上更稳妥，可避免 csv 模块写出多余空行。
         with open(file_path, 'w') as f:
             # using csv.writer method from CSV package
             write = csv.writer(f)
+            # 先写表头，再写正文，方便后续被 Jekyll 或表格软件读取。
             write.writerow(Article.to_csv_header())
             write.writerows(self.csv)
         return self

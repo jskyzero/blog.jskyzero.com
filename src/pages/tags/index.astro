@@ -4,6 +4,8 @@ import { getCollection } from 'astro:content';
 const docs = await getCollection('docs');
 const posts = docs.filter(d => d.data.date);
 
+// Count tags only from dated docs so landing pages or drafts do not pollute
+// the public tag cloud.
 const tagMap = new Map<string, number>();
 for (const post of posts) {
   for (const tag of post.data.tags || []) {
@@ -59,11 +61,16 @@ const tags = [...tagMap.entries()].sort((a, b) => b[1] - a[1]);
     .desc { color: var(--text-weak); margin-bottom: 1.5rem; }
     .tags-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; }
     .tag-item {
-      display: inline-flex; align-items: center;
-      background: var(--accent-bg); border: 1px solid var(--border);
-      padding: 4px 12px; border-radius: var(--radius);
-      font-size: 13px; color: var(--text-weak);
-      text-decoration: none; transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      background: var(--accent-bg);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      color: var(--text-weak);
+      text-decoration: none;
+      transition: color 0.15s, border-color 0.15s;
     }
     .tag-item:hover { color: var(--text-strong); }
     .tag-count { color: var(--text-weak); font-size: 12px; margin-left: 4px; }

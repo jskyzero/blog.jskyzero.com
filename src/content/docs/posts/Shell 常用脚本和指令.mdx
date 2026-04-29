@@ -5,6 +5,8 @@ category: "软件工具"
 image: "/images/site/bg3.jpg"
 ---
 
+{/* 文章维护说明：命令速查类内容，代码块注释应说明命令用途和风险。 */}
+
 本文汇总记录一些各个平台上的常用脚本和指令
 
 ## Shell
@@ -13,6 +15,7 @@ image: "/images/site/bg3.jpg"
 # 反向连接文件到一个
 # $(ls -r): 按文件名倒序(z-a)列出当前目录下所有文件
 # cat $i >> new.md: 将每个文件内容追加写入 new.md
+# 注意：这种写法无法安全处理带空格/换行的文件名，正式脚本建议使用 find -print0/read -d。
 for i in $(ls -r); do cat $i >> new.md; done;
 ```
 
@@ -20,6 +23,7 @@ for i in $(ls -r); do cat $i >> new.md; done;
 # 将.png结尾的文件名改为 .jpg
 # ls | cut -d '.' -f 1: 列出文件并用'.'分割，取文件名部分（不含扩展名）
 # xargs -I {1}: 将前一步的输出作为参数传递给 mv 命令
+# 注意：这只是改扩展名，不会转换图片编码格式。
 ls | cut -d '.' -f 1 | xargs -I {1} mv {1}.png {1}.jpg
 
 # 将.jpeg结尾的文件名改为.jpg（${x%.jpeg} 去掉扩展名再拼接新扩展名）
@@ -33,6 +37,7 @@ $PWD = Get-Location
 
 # 删除当前目录下所有旧的 .dll 文件
 Write-Output "Rove dll"
+# Remove-Item *.dll 会删除当前目录全部 DLL，执行前应确认工作目录正确。
 Remove-Item *.dll
 
 # 分别用 C# 和 VB 编译器将源码编译为 .dll 类库
@@ -68,7 +73,7 @@ Write-Output "Using JskyLibVB.MathVB"
 
 
 + Powershll prompt
-```
+```powershell
 # 用记事本打开 PowerShell 配置文件 $PROFILE
 notepad $PROFILE
 # 自定义 PowerShell 提示符为简洁的 "~: "
@@ -78,7 +83,7 @@ function prompt { "PS " + $( Get-Location | split-path -leaf ) + ": " }
 ```
 
 + WSL
-```
+```powershell
 # 立即终止所有正在运行的 WSL 发行版
 wsl --shutdown
 # 将指定 WSL 发行版导出为 .tar 文件，用于备份或迁移
@@ -96,16 +101,17 @@ wsl --set-default, -s <Distro>
 ## Linux
 
 + apt proxy
-```
+```bash
 # 编辑 apt 的代理配置文件
 sudo nano  /etc/apt/apt.conf
 # 设置 HTTP 代理地址，apt 下载软件包时将走此代理
+# 这里的地址需要替换成自己的代理服务；空用户名密码写法并不适用于所有代理。
 Acquire::http::Proxy "http://:@192.168.199.229:7890";
 # 设置 HTTPS 代理地址，适用于使用 HTTPS 协议的软件源
 Acquire::https::Proxy "http://:@192.168.199.229:7890";
 ```
 + gem install proxy
-```
+```bash
 # 通过 -p 参数指定 HTTP 代理，使用代理下载并安装 Ruby Gem 包
 sudo gem install -p http://127.0.0.1:7890 github-linguist
 ```
@@ -121,12 +127,13 @@ math.tan(math.radians(10))
 
 ## ImageMagick
 
-```
+```bash
 # 安装 ImageMagick 图像处理工具
 sudo apt install imagemagick
 # 编辑安全策略文件（如放宽图片尺寸和内存限制）
 sudo vi /etc/ImageMagick-6/policy.xml
 # 将当前目录所有 PNG 图片转为 JPG 格式，质量设为 90%
+# convert 的通配符输出在不同 ImageMagick 版本中行为可能不同，大量文件建议用 mogrify 或循环处理。
 convert *.png -quality 90 *.jpg
 # 将当前目录所有 JPG 图片按顺序合并为一个 PDF 文件
 convert *.jpg mydoc.pdf
@@ -135,12 +142,13 @@ convert *.jpg mydoc.pdf
 ## ffmpeg
 
 + 合并视频&音频
-```
+```bash
 # 将视频流(video.mp4)和音频流(audio.wav)合并到 MKV 容器中，-c copy 不重新编码直接复制
+# -c copy 要求输入编码能被目标容器支持，否则需要显式指定编码器重新编码。
 ffmpeg -i video.mp4 -i audio.wav -c copy output.mkv
 ```
 + Cut
-```
+```bash
 # from to
 # -ss 起始时间，-to 结束时间，从 05:10 剪切到 15:30
 ffmpeg -i input.mp4 -ss 00:05:10 -to 00:15:30 -c:v copy -c:a copy output2.mp4
@@ -152,8 +160,8 @@ ffmpeg -i input.mp4 -ss 00:05:20 -t 00:10:00 -c:v copy -c:a copy output1.mp4
 
 ## draw.io
 + [config for image size ](https://github.com/jgraph/drawio/issues/1887)
-```
-# draw.io 配置：设置导出图片的最大尺寸和最大字节数限制
+```json
+// draw.io 配置：设置导出图片的最大尺寸和最大字节数限制
 {
 "maxImageSize": "10000",
 "maxImageBytes": "30000000"

@@ -6,6 +6,8 @@ image: "/images/site/bg1.jpg"
 tags: ["Tools", "Microsoft"]
 ---
 
+{/* 文章维护说明：Windows 开发命令行速记，命令块应说明 VS 环境变量初始化用途。 */}
+
 想在PowerShell中直接用VsDevCmd还是需要点折腾的，本文将以使用VsDevCmd为例带读者初步学习编写.bat
 
 # VsDevCmd 在Shell中的打开姿势
@@ -29,12 +31,15 @@ tags: ["Tools", "Microsoft"]
 .\VsDevCmd.bat`
 
 除了暂时没找到回到上一次目录的方法，其他都还挺好的，查到的一些除了像这样写function的
-```
+```powershell
+# 覆盖 cd 函数，让 `cd -` 可以回到上一个目录；这种写法会影响当前 PowerShell 会话。
 function cd { if ($args[0] -eq '-') { $pwd=$OLDPWD; } else { $pwd=$args[0]; } $tmp=pwd; if ($pwd) { Set-Location $pwd; } Set-Variable -Name OLDPWD -Value $tmp -Scope global; }
+# 查看当前会话中 cd 函数的定义。
 Get-Item function:cd
 ```
 就是这样直接回去的
-```
+```powershell
+# 回到上一目录，前提是 OLDPWD 已经被上面的函数维护过。
 cd $OLDPWD
 ```
 
@@ -56,4 +61,3 @@ cd $OLDPWD
 + [Using Visual Studio Developer Command Prompt With PowerShell](https://www.gurustop.net/blog/2014/02/01/using-visual-studio-developer-command-prompt-with-powershell/)
 
 + [Managing Current Location](https://msdn.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/managing-current-location)
-

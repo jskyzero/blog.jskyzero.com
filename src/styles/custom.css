@@ -1,5 +1,11 @@
-/* opencode.ai custom.css — pixel-perfect copy for @astrojs/starlight */
-/* Source: https://github.com/anomalyco/opencode/blob/dev/packages/web/src/styles/custom.css */
+/*
+ * Site theme overrides for @astrojs/starlight.
+ *
+ * The palette and spacing started from opencode.ai's Starlight theme, then was
+ * adapted for this blog. Keep overrides grouped by purpose because most
+ * selectors intentionally target Starlight's generated structure.
+ */
+/* Source inspiration: https://github.com/anomalyco/opencode/blob/dev/packages/web/src/styles/custom.css */
 
 /* === Fonts === */
 @import '@fontsource/ibm-plex-mono/400.css';
@@ -74,7 +80,7 @@ body {
   }
 }
 
-.header:where(.astro-tcroauqe) {
+.header {
   border-bottom: 1px solid var(--color-border-weak) !important;
 }
 
@@ -291,7 +297,8 @@ strong {
   }
 }
 
-ul, ol {
+.sl-markdown-content ul,
+.sl-markdown-content ol {
   list-style: none !important;
   padding: 0 !important;
 }

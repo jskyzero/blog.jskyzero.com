@@ -5,6 +5,7 @@ category: "计算机科学"
 description: "本文将以LeetCode的例题为例子，用Python语言实现深度优先、广度优先搜索。"
 tags: ["DFS", "BFS", "Python", "LeetCode", "算法"]
 ---
+{/* 文章维护说明：DFS/BFS 算法笔记，Python 代码块强调遍历状态和边界条件。 */}
 本文将以LeetCode的例题为例子，用Python语言实现深度优先、广度优先搜索。
 
 
@@ -42,6 +43,8 @@ tags: ["DFS", "BFS", "Python", "LeetCode", "算法"]
 #         self.right = right
 class Solution:
     def increasingBST(self, root: TreeNode) -> TreeNode:
+        # resultTop 用来追加节点；如果不保存尾指针，每次追加都要从头遍历到末尾。
+        self.resultTop = None
         self.result = None  # 初始化结果树为空
         self.dfs(root)      # 中序遍历：保证输出结果是升序的
         return self.result
@@ -62,7 +65,7 @@ class Solution:
     def dfs(self, root: TreeNode) -> None:
         # 空树直接返回
         if root == None: return
-        stack = [root]  # 初始化栈，放入根节点
+        stack = [root]  # 初始化栈，放入根节点；栈顶代表下一步要处理的节点。
         
         while (len(stack) != 0):  # 栈非空时不断处理
             
@@ -80,7 +83,7 @@ class Solution:
                 top.left = None
                 top.right = None
                 
-                # 压栈顺序（因为是后进先出，所以反着放）：右 → 自身 → 左
+                # 压栈顺序（因为是后进先出，所以反着放）：右 → 自身 → 左。
                 # 这样处理顺序就是 左 → 自身 → 右，即中序遍历
                 if right != None: stack.append(right)
                 stack.append(top)           # 自身变为叶子节点后重新压栈
@@ -111,8 +114,8 @@ class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
         # 空树视为对称
         if root == None: return True
-        left = []   # 存储左子树的遍历序列
-        right = []  # 存储右子树的遍历序列
+        left = []   # 存储左子树的遍历序列，包含 None 才能表达缺失节点。
+        right = []  # 存储右子树的镜像遍历序列。
         # 左子树按正序（左→右）遍历，右子树按镜像序（右→左）遍历
         self.bfsLeft(root.left, left)
         self.bfsRight(root.right, right)
@@ -123,10 +126,10 @@ class Solution:
         return left == right
 
     def bfsLeft(self, root: TreeNode, result: list):
-        queen = [root]  # 用列表模拟队列，存储待访问节点
+        queen = [root]  # 用列表模拟队列，存储待访问节点；更高效可替换为 collections.deque。
         
         while len(queen) != 0:  # 队列非空则继续
-            top = queen.pop(0)   # 队首出队（pop(0)模拟FIFO）
+            top = queen.pop(0)   # 队首出队（pop(0)模拟FIFO，数据量大时会有搬移成本）
             
             if top != None:
                 result.append(top.val)        # 记录节点值

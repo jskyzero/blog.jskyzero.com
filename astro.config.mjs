@@ -1,11 +1,17 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
+// Central site metadata. Change these values first when cloning this project
+// into a new personal blog.
+const siteUrl = 'https://blog.jskyzero.com';
+const siteTitle = "jskyzero's blog";
+const repositoryUrl = 'https://github.com/jskyzero/blog.jskyzero.com';
+
 export default defineConfig({
-  site: 'https://blog.jskyzero.com',
+  site: siteUrl,
   integrations: [
     starlight({
-      title: "jskyzero's blog",
+      title: siteTitle,
       defaultLocale: 'root',
       locales: {
         root: {
@@ -35,13 +41,15 @@ export default defineConfig({
         },
       },
       social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/jskyzero/blog.jskyzero.com' },
+        { icon: 'github', label: 'GitHub', href: repositoryUrl },
       ],
       customCss: ['./src/styles/custom.css'],
       components: {
         Header: './src/components/Header.astro',
         Footer: './src/components/Footer.astro',
       },
+      // Keep sidebar links explicit so the blog can control categories and
+      // ordering independently from file names.
       sidebar: [
         { label: '站点介绍', link: '' },
         { label: 'About', link: '/posts/自我介绍' },
@@ -94,7 +102,7 @@ export default defineConfig({
         },
       ],
       editLink: {
-        baseUrl: 'https://github.com/jskyzero/blog.jskyzero.com/edit/blog/',
+        baseUrl: `${repositoryUrl}/edit/blog/`,
       },
       lastUpdated: true,
     }),

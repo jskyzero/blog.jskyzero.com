@@ -5,6 +5,8 @@ category: "计算机科学"
 tags: ["Python", "Artificial Intelligence"]
 ---
 
+{/* 文章维护说明：AI 搜索算法示例，代码块用于展示问题空间搜索过程。 */}
+
 本文將以八数码问题为例，讨论在解决问题时候的搜索算法的选择和优化。
 
 # 人工智能-搜索算法
@@ -30,8 +32,9 @@ tags: ["Python", "Artificial Intelligence"]
 引入头文件
 
 ```python
-import heapq
+import heapq  # 优先队列，用于按启发式评分取出“看起来更接近目标”的状态。
 
+# 8 数码状态用长度为 9 的一维数组表示，0 表示空格。
 initial = [8, 7, 6, 5, 4, 3, 2, 1, 0]
 final = [1, 2, 3, 4, 5, 6, 7, 8, 0]
 ```
@@ -39,29 +42,39 @@ final = [1, 2, 3, 4, 5, 6, 7, 8, 0]
 
 ```python
 def sub_move_choice(now_state):
+    # 返回当前状态移动空格后可以到达的所有下一状态。
     next_state = []
+    # 一维下标和 3x3 棋盘位置的对应关系：
     # 0 1 2
     # 3 4 5
     # 6 7 8
+    # index 是空格 0 的位置，空格只能和上下左右相邻格交换。
     index = now_state.index(0)
     if index % 3 == 0:
+        # 最左列只能向右交换。
         next_state.append(swap(now_state, index, index + 1))
     if index % 3 == 1:
+        # 中间列可以向左或向右交换。
         next_state.append(swap(now_state, index, index - 1))
         next_state.append(swap(now_state, index, index + 1))
     if index % 3 == 2:
+        # 最右列只能向左交换。
         next_state.append(swap(now_state, index, index - 1))
     if index // 3 == 0:
+        # 第一行只能向下交换。
         next_state.append(swap(now_state, index, index + 3))
     if index // 3 == 1:
+        # 中间行可以向上或向下交换。
         next_state.append(swap(now_state, index, index - 3))
         next_state.append(swap(now_state, index, index + 3))
     if index // 3 == 2:
+        # 最后一行只能向上交换。
         next_state.append(swap(now_state, index, index - 3))
     return next_state
 
 
 def swap(now_state, left, right):
+    # 复制一份状态，避免原列表被修改后影响其他搜索分支。
     new_state = now_state[:]
     temp = new_state[left]
     new_state[left] = new_state[right]
@@ -74,7 +87,9 @@ def swap(now_state, left, right):
 ```python
 
 def BFS(initial_state, end_state):
+    # next_states 保存当前深度的全部状态，逐层扩展就是广度优先。
     next_states = [initial_state]
+    # traveled 用 tuple 存储访问过的状态，因为 list 不可哈希，不能直接放 set。
     traveled = set(tuple(initial_state))
     depth = 0
     while not end_state in next_states and not len(next_states) == 0:
@@ -82,9 +97,11 @@ def BFS(initial_state, end_state):
         new_next_states = []
         for next_state in next_states:
             for sub_next_state in sub_move_choice(next_state):
+                # 跳过已访问状态，否则搜索图中会来回移动空格形成环。
                 if not tuple(sub_next_state) in traveled:
                     new_next_states.append(sub_next_state)
                     traveled.add(tuple(sub_next_state))
+        # 一层处理完后再整体替换，保证 depth 的含义是搜索层数。
         next_states = new_next_states[:]
         # print("depth = ", depth,
         #       "len = ", len(new_next_states),
@@ -94,10 +111,12 @@ def BFS(initial_state, end_state):
 
 def DFS(initial_state, end_state, Afunction):
     next_states = []
+    # heapq 是小根堆，所以取负数，让评分越高的状态越先被弹出。
     heapq.heappush(
         next_states, (-Afunction(initial_state, end_state), initial_state))
     traveled = set(tuple(initial_state))
     while not len(next_states) == 0:
+        # top_state 是当前启发式评分最高的待探索状态。
         top_state = heapq.heappop(next_states)[-1]
         if top_state == end_state:
             print("traveled = ", len(traveled))
@@ -105,6 +124,7 @@ def DFS(initial_state, end_state, Afunction):
         else:
             for next_state in sub_move_choice(top_state):
                 if not tuple(next_state) in traveled:
+                    # 将启发式评分和状态一起入堆，下一轮优先探索更接近目标的状态。
                     heapq.heappush(
                         next_states, (-Afunction(next_state, end_state), next_state))
                     traveled.add(tuple(next_state))
@@ -112,14 +132,17 @@ def DFS(initial_state, end_state, Afunction):
 
 
 def diferent_bit(one_state, another_state=final):
+    # 统计位置不同的格子数，差异越少越接近目标；取负数表示“代价”。
     return -sum([0 if x == y else 1 for(x, y) in zip(one_state, another_state)])
 
 def diferent_sum(one_state, another_state=final):
+    # 直接比较数字差值只是一种粗糙启发，未考虑棋盘空间位置。
     return -sum([abs(x - y) for(x, y) in zip(one_state, another_state)])
 
 def manhadun_space(one_state, another_state):
     space = 0
     for i in range(0, 9, 1):
+      # 找到当前数字在目标状态中的位置 j，计算当前位置 i 到 j 的曼哈顿距离。
       j = another_state.index(one_state[i])
       space = space + abs(j % 3 - i % 3) + abs(j // 3 - i // 3)
     return -space
@@ -128,7 +151,9 @@ def manhadun_space(one_state, another_state):
 我们可以看到这个差别，还是挺明显的。
 
 ```python
+# 基准 BFS：不使用启发式，遍历量最大。
 BFS(initial, final)
+# 后三项使用不同启发函数，越接近问题结构，遍历状态越少。
 DFS(initial, final, diferent_sum)
 DFS(initial, final, diferent_bit)
 DFS(initial, final, manhadun_space)

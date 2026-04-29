@@ -1,5 +1,8 @@
 name: Deploy to GitHub Pages
 
+# Build the static Astro site on the blog branch and publish `dist/` through
+# GitHub Pages. When cloning this blog, update the branch name if your default
+# publishing branch differs.
 on:
   push:
     branches: [blog]
